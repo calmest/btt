@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 // process login 
 Route::post('/login/account', 'LoginClientAccountController@loginUser');
+Route::get('/create/account', 'SignupClientAccountController@signupForm')->name('signup');

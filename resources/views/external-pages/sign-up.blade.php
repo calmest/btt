@@ -1,13 +1,12 @@
 @extends('__layouts.skin')
 
 @section('title')
-    Login Account | BTT
+	Create Account | BTT
 @endsection
 
 
 @section('contents')
-    <h1>Login Account Now</h1>
-    <!-- Main-Content -->
+	<!-- Main-Content -->
     <div class="main-w3layouts-form">
         <h2 class="sub-hdg-w3l">Create Account</h2>
         <!-- main-w3layouts-form -->
@@ -15,28 +14,27 @@
             {{ csrf_field() }}
             <div class="fields-w3-agileits">
                 <span class="fa fa-user" aria-hidden="true"></span>
+                <input type="text" name="name" required="" placeholder="name" />
+            </div>
+            <div class="fields-w3-agileits">
+                <span class="fa fa-envelope" aria-hidden="true"></span>
                 <input type="text" name="email" required="" placeholder="email" />
             </div>
             <div class="fields-w3-agileits">
                 <span class="fa fa-key" aria-hidden="true"></span>
                 <input type="password" name="email" required="" placeholder="******" />
             </div>
+            <div class="fields-w3-agileits">
+                <span class="fa fa-phone" aria-hidden="true"></span>
+                <input type="text" name="phone" pattern="[0-9]*" maxlength="11" required="" placeholder="080 000-000****" />
+            </div>
             <div class="remember-section-wthree">
-                <ul>
-                    <li>
-                        <label class="anim">
-                            <input type="checkbox" class="checkbox">
-                            <span> Remember me ?</span> 
-                        </label>
-                    </li>
-                    <li> <a href="#">Forgot password?</a> </li>
-                </ul>
                 <div class="clear"> </div>
             </div>
-            <input type="submit" value="Login" />
+            <input type="submit" value="Create Account"  />
         </form>
         <br /><br />
-        <input type="submit" value="Create Account" id="create-account" />
+        <input type="submit" value="Login Account" id="login-account" />
         <!--// main-w3layouts-form -->
         <!-- Social icons -->
         <div class="footer_grid-w3ls">
@@ -54,11 +52,11 @@
 
 
 @section('scripts')
-    <script type="text/javascript">
-        $('#create-account').click(function (){
-            window.location.href = '/create/account';
+	<script type="text/javascript">
+		$('#login-account').click(function (){
+            window.location.href = '/';
         });
-    </script>
+	</script>
 @endsection
 
 
