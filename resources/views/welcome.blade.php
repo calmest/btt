@@ -1,7 +1,7 @@
 @extends('__layouts.skin')
 
 @section('title')
-    Login Account | BTT
+    BTT | Login Account
 @endsection
 
 
