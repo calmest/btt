@@ -4,7 +4,6 @@
 	BTT | Create Account
 @endsection
 
-
 @section('contents')
 	<!-- Main-Content -->
     <div class="main-w3layouts-form">
@@ -24,17 +23,12 @@
                 <span class="fa fa-key" aria-hidden="true"></span>
                 <input type="password" name="email" required="" placeholder="******" />
             </div>
-            <div class="fields-w3-agileits">
-                <span class="fa fa-phone" aria-hidden="true"></span>
-                <input type="text" name="phone" pattern="[0-9]*" maxlength="11" required="" placeholder="080 000-000****" />
-            </div>
             <div class="remember-section-wthree">
                 <div class="clear"> </div>
             </div>
             <input type="submit" value="Create Account"  />
         </form>
         <br /><br />
-        <input type="submit" value="Login Account" id="login-account" />
         <!--// main-w3layouts-form -->
         <!-- Social icons -->
         <div class="footer_grid-w3ls">
@@ -49,7 +43,6 @@
     </div>
     <!--// Main-Content-->
 @endsection
-
 
 @section('scripts')
 	<script type="text/javascript">

@@ -65,10 +65,7 @@
             <li><a href="#home" class="page-scroll"><i class="fa fa-user"></i> <span style="color: gold;">Instant Wallet with BTT</span></a></li>
             <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> <span style="color: gold;">USD-1BTC </span></a></li>
             <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> <span style="color: gold;">BTT-1BTC </span></a></li>
-
             <li><a href="/create/account" class="page-scroll"><i class="fa fa-user"></i> <span style="color: gold;">New Account </span></a></li>
-
-            
           </ul>
         </div>
         <!-- /.navbar-collapse --> 
