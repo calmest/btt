@@ -48,7 +48,6 @@
     <!--// Main-Content-->
 @endsection
 
-
 @section('scripts')
     <script type="text/javascript">
         $('#create-account').click(function (){

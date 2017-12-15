@@ -10,14 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 // process login 
 Route::post('/login/account', 'LoginClientAccountController@loginUser');
-Route::get('/create/account', 'SignupClientAccountController@signupForm')->name('signup');
+Route::post('/create/account', 'SignupClientAccountController@signupForm')->name('do-signup');
+Route::get('/create/account', 'SignupClientAccountController@signupForm')->name('signup-form');
 
 
 
