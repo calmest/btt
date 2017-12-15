@@ -236,7 +236,7 @@ img {
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 100%;
-	background: url(../images/banner.jpg)no-repeat center top;
+	background: url(../images/bg.jpg)no-repeat center top;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;

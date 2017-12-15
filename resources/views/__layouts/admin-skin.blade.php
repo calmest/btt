@@ -26,6 +26,7 @@
                     <span class="icon-bar"></span></button>
                 <a class="navbar-brand" href="#"><span>BTT</span>Admin</a>
                 <ul class="nav navbar-top-links navbar-right">
+
                     <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                         <em class="fa fa-envelope"></em><span class="label label-danger">15</span>
                     </a>
@@ -84,10 +85,10 @@
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <div class="profile-sidebar">
             <div class="profile-userpic">
-                <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+                <img src="/images/logo.png" class="img-circle" width="50%" height="50%" alt="">
             </div>
             <div class="profile-usertitle">
-                <div class="profile-usertitle-name">Alpha</div>
+                <div class="profile-usertitle-name">BTT Alpha</div>
                 <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
             </div>
             <div class="clear"></div>
@@ -99,6 +100,7 @@
             </div>
         </form>
         <ul class="nav menu">
+            <li><a href="javascript:void(0);"><i class="fa fa-database"></i> 351,244,750.00</a></li>
             <li class="active"><a href="/admin"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
             <li><a href="#"><em class="fa fa-calendar">&nbsp;</em> Wallets</a></li>
             <li><a href="#"><em class="fa fa-bar-chart">&nbsp;</em> Trade Exchange</a></li>

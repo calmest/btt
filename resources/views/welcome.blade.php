@@ -4,13 +4,10 @@
     BTT | Login Account
 @endsection
 
-
 @section('contents')
-    <h1>Login Account Now</h1>
     <!-- Main-Content -->
     <div class="main-w3layouts-form">
         <h2 class="sub-hdg-w3l">Create Account</h2>
-        <!-- main-w3layouts-form -->
         <form action="/login/account" method="post">
             {{ csrf_field() }}
             <div class="fields-w3-agileits">
@@ -37,7 +34,6 @@
         </form>
         <br /><br />
         <input type="submit" value="Create Account" id="create-account" />
-        <!--// main-w3layouts-form -->
         <!-- Social icons -->
         <div class="footer_grid-w3ls">
             <h5 class="sub-hdg-w3l">or login with your social profile</h5>
