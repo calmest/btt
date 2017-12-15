@@ -33,7 +33,6 @@
             <input type="submit" value="Login" />
         </form>
         <br /><br />
-        <input type="submit" value="Create Account" id="create-account" />
         <!-- Social icons -->
         <div class="footer_grid-w3ls">
             <h5 class="sub-hdg-w3l">or login with your social profile</h5>
