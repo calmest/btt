@@ -10,6 +10,6 @@ class LoginClientAccountController extends Controller
     public function loginUser($value='')
     {
     	# code...
-    	return redirect()->back();
+    	return redirect('/account/dashboard');
     }
 }
