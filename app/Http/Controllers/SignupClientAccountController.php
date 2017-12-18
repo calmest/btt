@@ -33,10 +33,9 @@ class SignupClientAccountController extends Controller
     		);
     		//
     		return response()->json($data);
+    	}else{
+    		
     	}
-
-    	// check if users already exits 
-    	$already_phone_exits = Client::where('phone', $phone)->first();
 
     	// check if users already exits 
     	$already_user_exits = Client::where('name', $name)->first();

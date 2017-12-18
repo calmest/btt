@@ -34,7 +34,7 @@
             <input type="submit" value="Create Account"  />
         </form>
         <br /><br />
-        <input type="submit" value="Login Account" id="login-account" />
+
         <!--// main-w3layouts-form -->
         <!-- Social icons -->
         <div class="footer_grid-w3ls">
@@ -90,6 +90,9 @@
                 error: function (data){
                     alert('Fail to process login request');
                     console.log(data);
+                },
+                then: function (){
+                    
                 }
             });
 
