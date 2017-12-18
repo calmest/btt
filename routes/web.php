@@ -11,19 +11,18 @@
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return view('internal-pages.welcome');
 });
 
 // process login 
-Route::post('/login/account', 'LoginClientAccountController@loginUser');
-Route::post('/create/account', 'SignupClientAccountController@signupForm')->name('do-signup');
+Route::post('/login/account', 'LoginClientAccountController@loginUser')->name('signin-user');
+Route::post('/create/account', 'SignupClientAccountController@doSignup')->name('sigup-user');
 Route::get('/create/account', 'SignupClientAccountController@signupForm')->name('signup-form');
-
 
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes Client Home Controller
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -32,6 +31,12 @@ Route::get('/create/account', 'SignupClientAccountController@signupForm')->name(
 |
 */
 
+Route::get('/account/dashboard',    'ClientHomeController@dashboard');
+Route::get('/account/wallets',      'ClientHomeController@wallets');
+Route::get('/account/transactions', 'ClientHomeController@transactions')->name('transactions');
+Route::get('/account/setting',      'ClientHomeController@setting')->name('setting');
+Route::get('/account/chart/{pair}', 'ClientHomeController@charts')->name('charts');
+Route::get('/account/logout',       'ClientHomeController@logout')->name('exit');
 
 
 /*
@@ -40,7 +45,6 @@ Route::get('/create/account', 'SignupClientAccountController@signupForm')->name(
 |--------------------------------------------------------------------------
 |
 */
-
 
 // Admin Pages Controllers
 Route::get('/admin',         'AdminPagesController@index');

@@ -22,22 +22,54 @@ class SignupClientAccountController extends Controller
     	$name   = $request->name;
     	$email  = $request->email;
     	$pass   = $request->pass;
-    	$phone  = $request->phone;
+
+        // encrypt password
+        $pass = bcrypt($pass);
 
     	// check if users already exits 
     	$already_email_exits = Client::where('email', $email)->first();
-    	if($already_email_exits == null){
+    	if($already_email_exits !== null){
     		$data = array(
     			'status'  => 'error',
     			'message' => 'This email already exits !'
     		);
-    		//
+
+    		// check for response
     		return response()->json($data);
     	}else{
-    		
-    	}
+    	   // check if users already exits 
+    	   $already_user_exits = Client::where('name', $name)->first();
 
-    	// check if users already exits 
-    	$already_user_exits = Client::where('name', $name)->first();
+            // check if users already exits 
+            $already_user_exits = Client::where('name', $name)->first();
+
+            if($already_user_exits == null){
+
+                // now save users information and create a local wallet
+                $clients           = New Client();
+                $clients->name     = $name;
+                $clients->email    = $email;
+                $clients->password = $pass;
+                $clients->save();
+
+                // send clients a signup successfull messages
+                $data = array(
+                    'status'  => 'success',
+                    'message' => 'Registration successfull !, A confirmation link has been sent to '.$email
+                );
+                
+                // check for response
+                return response()->json($data);
+            }else{
+
+                $data = array(
+                    'status'  => 'error',
+                    'message' => 'This user already exits !'
+                );
+                
+                // check for response
+                return response()->json($data);
+            }
+        }
     }
 }

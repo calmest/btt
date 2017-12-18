@@ -19,11 +19,12 @@
     </script>
     <!-- //Meta Tags -->
     <link rel="icon" href="/images/ico-set.png">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -65,10 +66,7 @@
             <li><a href="#home" class="page-scroll"><i class="fa fa-user"></i> <span style="color: gold;">Instant Wallet with BTT</span></a></li>
             <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> <span style="color: gold;">USD-1BTC </span></a></li>
             <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> <span style="color: gold;">BTT-1BTC </span></a></li>
-
             <li><a href="/create/account" class="page-scroll"><i class="fa fa-user"></i> <span style="color: gold;">New Account </span></a></li>
-
-            
           </ul>
         </div>
         <!-- /.navbar-collapse --> 
@@ -87,7 +85,7 @@
     <!--// copyright -->
     <!--//background-->
     @yield('scripts')
-    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script> -->
 </body>
 
 </html>

@@ -4,13 +4,13 @@
 	BTT | Create Account
 @endsection
 
-
 @section('contents')
 	<!-- Main-Content -->
     <div class="main-w3layouts-form">
         <h2 class="sub-hdg-w3l">Create Account</h2>
         <!-- main-w3layouts-form -->
-        <form action="/login/account" method="post">
+
+        <form method="post" id="signup-form" onsubmit="return checkClient()" >
             {{ csrf_field() }}
             <div class="fields-w3-agileits">
                 <span class="fa fa-user" aria-hidden="true"></span>
@@ -24,17 +24,19 @@
                 <span class="fa fa-key" aria-hidden="true"></span>
                 <input type="password" name="password" required="" placeholder="******" />
             </div>
-            <div class="fields-w3-agileits">
-                <span class="fa fa-phone" aria-hidden="true"></span>
-                <input type="text" name="phone" pattern="[0-9]*" maxlength="11" required="" placeholder="000 000-000****" />
-            </div>
             <div class="remember-section-wthree">
                 <div class="clear"> </div>
             </div>
-            <input type="submit" value="Create Account"  />
+            <button id="create-account">Create Account</button>
+            <br /><br /><br />
+            <div class="error-msg"></div>
+            <div class="success-msg"></div>
         </form>
         <br /><br />
+<<<<<<< HEAD
 
+=======
+>>>>>>> df6b12f5cfb7ab9200609e6db3769fdd7d144872
         <!--// main-w3layouts-form -->
         <!-- Social icons -->
         <div class="footer_grid-w3ls">
@@ -48,27 +50,21 @@
         <!--// Social icons -->
     </div>
     <!--// Main-Content-->
-@endsection
-
-
-@section('scripts')
-	<script type="text/javascript">
-		$('#login-account').click(function (){
-
+    <script type="text/javascript">
+        function checkClient()
+        {
             // get form data
-            var name  = $("input[name=name]").val();
+            var name  = $("input[name=name]").val(); 
             var email = $("input[name=email]").val();
             var pass  = $("input[name=password]").val();
-            var phone = $("input[name=phone]").val();
             var token = $("input[name=_token]").val();
 
             // prepare object
             var data = {
-                name:name
-                email:email
+                _token:token,
+                name:name,
+                email:email,
                 pass:pass
-                phone:phone
-                token:token
             };
 
             // send ajax request
@@ -78,13 +74,25 @@
                 data: data,
                 cache: false,
                 success: function (data){
-                    console.log(data);
+                    // console.log(data);
                     if(data.status == 'error'){
                         // show error messages
-                        $('.error-msg').html();
-                    }else{
-                        // redirect to home page
-                        window.location.href = '/client/dashboard';
+                        $('.error-msg').html(`
+                            <div class="alert alert-danger">
+                                <p class="text-danger">`+data.message+`</p>
+                            </div>
+                        `);
+                    }
+
+                    if(data.status == 'success'){
+                        // alert('seen !');
+                        // show error messages
+                        $('.success-msg').html(`
+                            <div class="alert alert-success">
+                                <p class="text-success">`+data.message+`</p>
+                                <p class="text-success">Click <a href="/">Here </a> to Login </p>
+                            </div>
+                        `);
                     }
                 },
                 error: function (data){
@@ -97,8 +105,12 @@
             });
 
             return false;
-        });
-	</script>
+        }
+    </script>
+@endsection
+
+@section('scripts')
+	
 @endsection
 
 
