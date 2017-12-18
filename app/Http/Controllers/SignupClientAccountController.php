@@ -64,6 +64,7 @@ class SignupClientAccountController extends Controller
                     'status'  => 'error',
                     'message' => 'This user already exits !'
                 );
+                
                 // check for response
                 return response()->json($data);
             }
