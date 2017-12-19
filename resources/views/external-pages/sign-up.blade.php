@@ -9,7 +9,6 @@
     <div class="main-w3layouts-form">
         <h2 class="sub-hdg-w3l">Create Account</h2>
         <!-- main-w3layouts-form -->
-
         <form method="post" id="signup-form" onsubmit="return checkClient()" >
             {{ csrf_field() }}
             <div class="fields-w3-agileits">
@@ -27,16 +26,13 @@
             <div class="remember-section-wthree">
                 <div class="clear"> </div>
             </div>
-            <button id="create-account">Create Account</button>
+            <button id="create-account" style="padding: 0.8em;border-radius: 5px;">Create Account</button>
             <br /><br /><br />
             <div class="error-msg"></div>
             <div class="success-msg"></div>
         </form>
         <br /><br />
-<<<<<<< HEAD
 
-=======
->>>>>>> df6b12f5cfb7ab9200609e6db3769fdd7d144872
         <!--// main-w3layouts-form -->
         <!-- Social icons -->
         <div class="footer_grid-w3ls">
