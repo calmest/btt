@@ -19,7 +19,7 @@
                 <div class="panel-body easypiechart-panel">
                     <br />
                     <h2>BTC Wallet</h2>
-                    <div style="padding: 2em;font-size: 1px;"><i class="fa fa-btc"></i> 0.00336545</div>
+                    <div style="padding: 2em;font-size: 21px;"><i class="fa fa-btc"></i> 0.00336545</div>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <div class="panel-body easypiechart-panel">
                     <br />
                     <h2>BTT Wallet</h2>
-                   	<div style="padding: 2em;font-size: 1px;"><i class="fa fa-database"></i> 0.23653562</div>
+                   	<div style="padding: 2em;font-size: 21px;"><i class="fa fa-database"></i> 0.23653562</div>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                 <div class="panel-body easypiechart-panel">
                     <br />
                     <h2>USD Wallet</h2>
-                    <div style="padding: 2em;font-size: 1px;"><i class="fa fa-usd"></i> 580.00</div>
+                    <div style="padding: 2em;font-size: 21px;"><i class="fa fa-usd"></i> 580.00</div>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                 <div class="panel-body easypiechart-panel">
                     <br />
                     <h2>ETH Wallet</h2>
-                    <div style="padding: 2em;font-size: 1px;"><i class="fa fa-database"></i> 0.000000</div>
+                    <div style="padding: 2em;font-size: 21px;"><i class="fa fa-database"></i> 0.000000</div>
                 </div>
             </div>
         </div>
