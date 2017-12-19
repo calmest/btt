@@ -15,7 +15,7 @@ class LoginClientAccountController extends Controller
     	$pass  = $request->password;
 
     	// ecnrypt password
-    	$pass = bcrypt($pass);
+    	// $pass = bcrypt($pass);
     	$rememberToken = $request->remember;
 
 		// Attemp to logged the user in
