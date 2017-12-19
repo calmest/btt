@@ -31,6 +31,10 @@
                 <div class="clear"> </div>
             </div>
             <input type="submit" value="Login" />
+            <br /><br />
+            @if(session('error-status'))
+                <p class="text-danger">{{ session('error-status') }}</p>
+            @endif
         </form>
         <br /><br />
         <!-- Social icons -->

@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Client;
+use Auth;
 
 class ClientHomeController extends Controller
 {
+
+    // secure home page controller 
+    public function __construct()
+    {
+        $this->middleware('auth:client')->except('logout');
+    }
+
     // init users informations
     public function dashboard()
     {
@@ -59,6 +68,7 @@ class ClientHomeController extends Controller
     public function logout()
     {
     	# code...
+        Auth::guard('client')->logout();
     	return redirect('/');
     }
 }
