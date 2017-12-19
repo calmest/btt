@@ -1053,6 +1053,8 @@ if (token) {
 //     key: 'your-pusher-key'
 // });
 
+window.exchange = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./blockchain.info/exchange\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {

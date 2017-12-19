@@ -76,6 +76,11 @@ Route::post('/admin/login',   'AdminLoginController@doLogin')->name('login-actio
 |
 */
 
+Route::get('/load/trade/history', 'BitxController@loadLastTrade');
+// Route::get('/load/pairs',   'BitxController@loadPair');
+// Route::get('/load/history', 'PoloniexController@loadhistory');
+// Route::get('/load/ticker',  'PoloniexController@loadTicker');
+
 
 /*
 |--------------------------------------------------------------------------

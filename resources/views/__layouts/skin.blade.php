@@ -88,34 +88,21 @@
     <!-- <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script> -->
     <script type="text/javascript">
 
-        $.get("https://api.mybitx.com/api/1/ticker?pair=XBTNGN", function (data){
-            console.log(data);
-            var ngn = data.last_trade;
+        // get currency converting rate
+        $.get('http://www.apilayer.net/api/live?access_key=83662078275f349a742f363c2cf1c3b3', function (data){
+            var usd = data.quotes.USDNGN;
+            console.log(data.quotes.USDNGN);
+        });
+
+        var btx = function (){
             // get currency converting rate
             $.get('http://www.apilayer.net/api/live?access_key=83662078275f349a742f363c2cf1c3b3', function (data){
                 var usd = data.quotes.USDNGN;
-
-                var btc = usd * ngn;
-                $('.btx-usd').html(btc);
                 console.log(data.quotes.USDNGN);
-            });
-        });
-        var btx = function (){
-            $.get("https://api.mybitx.com/api/1/ticker?pair=XBTNGN", function (data){
-                console.log(data);
-                var ngn = data.last_trade;
-                // get currency converting rate
-                $.get('http://www.apilayer.net/api/live?access_key=83662078275f349a742f363c2cf1c3b3', function (data){
-                    var usd = data.quotes.USDNGN;
-
-                    var btc = usd * ngn;
-                    $('.btx-usd').html(btc);
-                    console.log(data.quotes.USDNGN);
-                });
             });
         };
 
-        setInterval(btx, 5000);
+        setInterval(btx, 1000 * 10);
     </script>
 </body>
 
