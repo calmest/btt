@@ -65,7 +65,7 @@
             <!-- <li><a href="#contact-section" class="page-scroll"><i class="fa fa-money"></i> Wallet</a></li> -->
             <li><a href="#home" class="page-scroll"><i class="fa fa-copy"></i> <span style="color: gold;">GET A FREE WALLET</span></a></li>
             <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> <span style="color: gold;"><span class="btx-usd"></span> USD/1BTC </span></a></li>
-            <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> <span style="color: gold;">BTT/1BTC </span></a></li>
+            <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> <span style="color: gold;">4.15877475 BTT/1BTC </span></a></li>
             <li><a href="/create/account" class="page-scroll"><i class="fa fa-user"></i> <span style="color: gold;">SIGNUP </span></a></li>
           </ul>
         </div>
@@ -87,6 +87,19 @@
     @yield('scripts')
     <!-- <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script> -->
     <script type="text/javascript">
+
+        $.get("https://api.mybitx.com/api/1/ticker?pair=XBTNGN", function (data){
+            console.log(data);
+            var ngn = data.last_trade;
+            // get currency converting rate
+            $.get('http://www.apilayer.net/api/live?access_key=83662078275f349a742f363c2cf1c3b3', function (data){
+                var usd = data.quotes.USDNGN;
+
+                var btc = usd * ngn;
+                $('.btx-usd').html(btc);
+                console.log(data.quotes.USDNGN);
+            });
+        });
         var btx = function (){
             $.get("https://api.mybitx.com/api/1/ticker?pair=XBTNGN", function (data){
                 console.log(data);
