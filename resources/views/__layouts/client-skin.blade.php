@@ -7,7 +7,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/datepicker3.css" rel="stylesheet">
-    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/client-style.css" rel="stylesheet">
     
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -17,24 +17,13 @@
     <![endif]-->
 </head>
 <body>
-
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" style="position: absolute; margin-top: 0px;">
         <div class="profile-sidebar">
             <div class="profile-userpic">
                 <img src="/images/logo.png" class="img-circle" width="50%" height="50%" alt="">
             </div>
-            <div class="profile-usertitle">
-                <div class="profile-usertitle-name">BTT Alpha</div>
-                <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
-            </div>
-            <div class="clear"></div>
         </div>
         <div class="divider"></div>
-        <form role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-        </form>
         <ul class="nav menu">
             <li class="active"><a href="/"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
             <li><a href="#"><em class="fa fa-calendar">&nbsp;</em> Transaction</a></li>
@@ -60,7 +49,6 @@
             <li><a href="/admin/login"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
         </ul>
     </div><!--/.sidebar-->
-        
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
@@ -77,79 +65,6 @@
             </div>
         </div><!--/.row-->
         @yield('contents')
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Site Traffic Overview
-                        <ul class="pull-right panel-settings panel-button-tab-right">
-                            <li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-                                <em class="fa fa-cogs"></em>
-                            </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li>
-                                        <ul class="dropdown-settings">
-                                            <li><a href="#">
-                                                <em class="fa fa-cog"></em> Settings 1
-                                            </a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">
-                                                <em class="fa fa-cog"></em> Settings 2
-                                            </a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#">
-                                                <em class="fa fa-cog"></em> Settings 3
-                                            </a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
-                    <div class="panel-body">
-                        <div class="canvas-wrapper">
-                            <canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.row-->
-        
-        <div class="row">
-            <div class="col-xs-6 col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body easypiechart-panel">
-                        <h4>New Orders</h4>
-                        <div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body easypiechart-panel">
-                        <h4>Comments</h4>
-                        <div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body easypiechart-panel">
-                        <h4>New Users</h4>
-                        <div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-body easypiechart-panel">
-                        <h4>Visitors</h4>
-                        <div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span></div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.row-->
     </div>  <!--/.main-->
     @yield('scripts')
     <script src="/js/jquery-1.11.1.min.js"></script>

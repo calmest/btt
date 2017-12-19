@@ -86,6 +86,11 @@
     <!--//background-->
     @yield('scripts')
     <!-- <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script> -->
+    <script type="text/javascript">
+        // $.get("https://api.mybitx.com/api/1/ticker?pair=XBTNGN", function (data){
+        //     console.log(data);
+        // });
+    </script>
 </body>
 
 </html>
