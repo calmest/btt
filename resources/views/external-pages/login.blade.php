@@ -16,7 +16,7 @@
             </div>
             <div class="fields-w3-agileits">
                 <span class="fa fa-key" aria-hidden="true"></span>
-                <input type="password" name="email" required="" placeholder="******" />
+                <input type="password" name="password" required="" placeholder="******" />
             </div>
             <div class="remember-section-wthree">
                 <ul>
