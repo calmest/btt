@@ -10,11 +10,11 @@ class BitxController extends Controller
     // use btx 
     public function loadLastTrade()
     {
-    	// get balance 
-    	$poloniex = new Bitx();
-    	$data = $poloniex->get_balances();
+    	// // get balance 
+    	// $poloniex = new Bitx();
+    	// $data = $poloniex->get_balances();
 
-    	return response()->json($data);
+    	// return response()->json($data);
     }
 
     // public function loadPair()
