@@ -21,6 +21,13 @@ class ClientHomeController extends Controller
     }
 
     // init users informations
+    public function alert()
+    {
+        # code...
+        return view('internal-pages.price-alert');
+    }
+
+    // init users informations
     public function transactions()
     {
     	# code...

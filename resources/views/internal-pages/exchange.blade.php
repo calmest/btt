@@ -10,14 +10,14 @@
             <li><a href="#">
                 <em class="fa fa-home"></em>
             </a></li>
-            <li class="active">Transaction</li>
+            <li class="active">Exchange</li>
         </ol>
     </div><!--/.row-->
     <!-- Main-Content -->
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Transaction History</h1>
+                <h1>Exchange History</h1>
             </div>
         </div>
     </div>

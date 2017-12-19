@@ -25,7 +25,7 @@
         </div>
         <div class="divider"></div>
         <ul class="nav menu">
-            <li><a href="/"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+            <li><a href="/account/dashboard"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
             <li><a href="/account/transaction"><em class="fa fa-calendar">&nbsp;</em> Transaction</a></li>
             <li><a href="/account/exchange"><em class="fa fa-bar-chart">&nbsp;</em> Exchange</a></li>
             <li><a href="/account/price-alert"><em class="fa fa-toggle-off">&nbsp;</em> Price Alert</a></li>
@@ -45,25 +45,11 @@
                     </a></li>
                 </ul>
             </li>
-            <li><a href="#"><em class="fa fa-cog">&nbsp;</em> Setting </a></li>
-            <li><a href="/admin/login"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+            <li><a href="/account/setting"><em class="fa fa-cog">&nbsp;</em> Setting </a></li>
+            <li><a href="/account/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
         </ul>
     </div><!--/.sidebar-->
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-        <div class="row">
-            <ol class="breadcrumb">
-                <li><a href="#">
-                    <em class="fa fa-home"></em>
-                </a></li>
-                <li class="active">Dashboard</li>
-            </ol>
-        </div><!--/.row-->
-        
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Dashboard</h1>
-            </div>
-        </div><!--/.row-->
         @yield('contents')
     </div>  <!--/.main-->
     @yield('scripts')
