@@ -88,25 +88,6 @@
     <!-- <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script> -->
     <script type="text/javascript">
 
-        // get currency converting rate
-        $.get('http://www.apilayer.net/api/live?access_key=83662078275f349a742f363c2cf1c3b3', function (data){
-            var usd = data.quotes.USDNGN;
-            console.log(data.quotes.USDNGN);
-        });
-
-        $.get('https://api.itbit.com/v1/markets/XBTUSD/ticker', function (data){
-            console.log(data);
-        });
-
-        var btx = function (){
-            // get currency converting rate
-            $.get('http://www.apilayer.net/api/live?access_key=83662078275f349a742f363c2cf1c3b3', function (data){
-                var usd = data.quotes.USDNGN;
-                console.log(data.quotes.USDNGN);
-            });
-        };
-
-        setInterval(btx, 1000 * 10);
     </script>
 </body>
 
