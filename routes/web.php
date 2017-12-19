@@ -52,9 +52,13 @@ Route::get('/account/logout',       'ClientHomeController@logout')->name('exit')
 */
 
 // Admin Pages Controllers
-Route::get('/admin',         'AdminPagesController@index');
-Route::get('/admin/error',   'AdminPagesController@error');
-Route::get('/admin/clients', 'AdminPagesController@clients');
+Route::get('/admin',           'AdminPagesController@index');
+Route::get('/admin/dashboard', 'AdminPagesController@dashboard');
+Route::get('/admin/error',     'AdminPagesController@error');
+Route::get('/admin/clients',   'AdminPagesController@clients');
+Route::get('/admin/btt/clients',     'AdminPagesController@allUsers');
+Route::get('/admin/logout',    'AdminPagesController@logout');
+
 
 // Admin Authentications 
 Route::get('/admin/login',   'AdminLoginController@showLogin')->name('login-form');

@@ -4,14 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Client;
 
 class AdminPagesController extends Controller
 {
+
+    // auth pages 
+    public function __construct()
+    {
+        $this->middleware('auth:admin')->except('logout');
+    }
+
     // get admin index page
     public function index()
     {
     	# code...
     	return view('admin-pages.index');
+    }
+
+    // get admin index page
+    public function dashboard()
+    {
+        # code...
+        return view('admin-pages.index');
     }
 
     // get admin index page
@@ -42,11 +57,20 @@ class AdminPagesController extends Controller
     public function rewards()
     {
     	# code...
-    }   
+    }
 
-    // get admin index page
+    // get all users
+    public function allUsers()
+    {
+        $clients = Client::all();
+        return view('admin-pages.list-users', compact('clients'));
+    }
+
+    // get admin logout page
     public function logout()
     {
-    	# code...
+    	# logout admin
+        Auth::guard('admin')->logout();
+        return redirect('/admin/login');
     }   
 }

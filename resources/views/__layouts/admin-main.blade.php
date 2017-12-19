@@ -60,17 +60,13 @@
         
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
           <ul class="nav navbar-nav navbar-right" style="color:gold;">
-            <!-- <li><a href="#contact-section" class="page-scroll"><i class="fa fa-money"></i> Wallet</a></li> -->
-            <li><a href="#home" class="page-scroll"><i class="fa fa-copy"></i> <span style="color: gold;">GET A FREE WALLET</span></a></li>
             <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> 
                 <span style="color: gold;"><span class="btx-usd"></span> 1BTC-USD </span></a>
             </li>
             <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> 
                 <span style="color: gold;">1BTC-BTT 4.15877475  </span></a>
             </li>
-            <li><a href="/create/account" class="page-scroll"><i class="fa fa-sign-in"></i> <span style="color: gold;">SIGN UP</span></a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse --> 

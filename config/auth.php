@@ -46,6 +46,11 @@ return [
             'provider' => 'clients',
         ],
 
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -78,6 +83,11 @@ return [
         'clients' => [
             'driver' => 'database',
             'table' => 'clients',
+        ],
+
+        'admins' => [
+            'driver' => 'database',
+            'table' => 'admins',
         ],
 
         // 'users' => [

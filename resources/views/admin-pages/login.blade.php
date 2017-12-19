@@ -1,4 +1,4 @@
-@extends('__layouts.skin')
+@extends('__layouts.admin-main')
 
 @section('title')
     BTT | Login Account
@@ -22,15 +22,22 @@
 							</div>
 							<hr />
 							<div class="form-group">
-								<input class="form-control" style="width: 100px;" placeholder="token" name="access_token" type="password" value=""> 
-								<a href="/resend-token">resend token</a>
+								<input class="form-control" style="width: 100px;" required="" 
+								placeholder="token" name="btt_token" type="password"> 
+								<a href="#">resend token</a>
 								<hr />
 								<p><b>Note:</b> <span class="text-warning">check access code via sms/email</span></p>
 							</div>
 							<button class="btn btn-primary">Secured Login</button>
 						</fieldset>
 						<br />
-						<p class="text-success">To many Login Attempt will fire hacklock for 24hrs</p>
+
+						@if(session('error-status'))
+							<div class="alert alert-danger">
+								<p class="text-danger">{{ session('error-status') }}</p>
+								<p class="text-danger">To many Login Attempt will fire hacklock for 24hrs</p>
+							</div>
+						@endif
 					</form>
 				</div>
 			</div>
