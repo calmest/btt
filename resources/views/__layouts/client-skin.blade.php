@@ -25,22 +25,22 @@
         </div>
         <div class="divider"></div>
         <ul class="nav menu">
-            <li class="active"><a href="/"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-            <li><a href="#"><em class="fa fa-calendar">&nbsp;</em> Transaction</a></li>
-            <li><a href="#"><em class="fa fa-bar-chart">&nbsp;</em> Exchange</a></li>
-            <li><a href="#"><em class="fa fa-toggle-off">&nbsp;</em> Price Alert</a></li>
-            <li><a href="#"><em class="fa fa-clone">&nbsp;</em> Charts</a></li>
+            <li><a href="/"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+            <li><a href="/account/transaction"><em class="fa fa-calendar">&nbsp;</em> Transaction</a></li>
+            <li><a href="/account/exchange"><em class="fa fa-bar-chart">&nbsp;</em> Exchange</a></li>
+            <li><a href="/account/price-alert"><em class="fa fa-toggle-off">&nbsp;</em> Price Alert</a></li>
+            <li><a href="/account/charts"><em class="fa fa-clone">&nbsp;</em> Charts</a></li>
             <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
                 <em class="fa fa-navicon">&nbsp;</em> Wallets <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
                 <ul class="children collapse" id="sub-item-1">
-                    <li><a class="" href="#">
+                    <li><a class="/account/btt-wallet" href="#">
                         <span class="fa fa-arrow-right">&nbsp;</span> <i class="fa fa-bitcoin"></i> BTT 
                     </a></li>
-                    <li><a class="" href="#">
+                    <li><a class="/account/eth-wallet" href="#">
                         <span class="fa fa-arrow-right">&nbsp;</span> <i class="fa fa-bitcoin"></i> ETH 
                     </a></li>
-                    <li><a class="" href="#">
+                    <li><a class="/account/btc-wallet" href="#">
                         <span class="fa fa-arrow-right">&nbsp;</span> <i class="fa fa-bitcoin"></i> BTC 
                     </a></li>
                 </ul>

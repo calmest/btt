@@ -32,8 +32,9 @@ Route::get('/create/account', 'SignupClientAccountController@signupForm')->name(
 */
 
 Route::get('/account/dashboard',    'ClientHomeController@dashboard');
-Route::get('/account/wallets',      'ClientHomeController@wallets');
-Route::get('/account/transactions', 'ClientHomeController@transactions')->name('transactions');
+Route::get('/account/wallet',       'ClientHomeController@wallets');
+Route::get('/account/transaction',  'ClientHomeController@transactions')->name('transactions');
+Route::get('/account/exchange',     'ClientHomeController@exchange')->name('exchange');
 Route::get('/account/setting',      'ClientHomeController@setting')->name('setting');
 Route::get('/account/chart/{pair}', 'ClientHomeController@charts')->name('charts');
 Route::get('/account/logout',       'ClientHomeController@logout')->name('exit');

@@ -28,6 +28,13 @@ class ClientHomeController extends Controller
     }
 
     // init users informations
+    public function exchange()
+    {
+        # code...
+        return view('internal-pages.exchange');
+    }
+
+    // init users informations
     public function setting()
     {
     	# code...
