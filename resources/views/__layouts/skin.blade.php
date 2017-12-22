@@ -39,6 +39,9 @@
     <!--//fonts-->
 </head>
 <style type="text/css">
+    html body {
+        font-size: 12px;
+    }
     .ico-set {
         position: absolute;
         top: 2px;
@@ -89,10 +92,7 @@
     <!--// copyright -->
     <!--//background-->
     @yield('scripts')
-    <!-- <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script> -->
-    <script type="text/javascript">
-
-    </script>
+    <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
 </body>
 
 </html>

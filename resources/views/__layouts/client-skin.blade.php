@@ -17,11 +17,42 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 </head>
+<style type="text/css">
+    html body {
+        font-size: 13px;
+    }
+    .ico-set {
+        position: absolute;
+        top: 2px;
+        width: auto;
+        height: auto;
+    }
+</style>
 <body>
+    <!-- Navigation -->
+    <nav id="menu" class="navbar navbar-default navbar-fixed-top" style="background-color: rgba(000,000,030,0.80);">
+      <div class="container"> 
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+              <a class="navbar-brand" href="/"> 
+                <img src="/images/ico-set.png" class="ico-set">
+            </a> 
+        </div>
+        
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        </div>
+        <!-- /.navbar-collapse --> 
+      </div>
+      <!-- /.container-fluid --> 
+    </nav>
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" style="position: absolute; margin-top: 0px;">
         <div class="profile-sidebar">
             <div class="profile-userpic">
                 <img src="/images/logo.png" class="img-circle" width="50%" height="50%" alt="">
+                {{ Auth::user()->name }}
             </div>
         </div>
         <div class="divider"></div>
@@ -50,7 +81,7 @@
             <li><a href="/account/logout"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
         </ul>
     </div><!--/.sidebar-->
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main small">
         @yield('contents')
     </div>  <!--/.main-->
     @yield('scripts')

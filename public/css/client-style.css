@@ -1,7 +1,7 @@
 body {
   background: #f1f4f7;
   padding-top: 60px;
-  font-size: 14px;
+  font-size: 13px;
   color: #444444;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
@@ -84,7 +84,7 @@ input.form-control {
 
 .navbar-header .navbar-brand {
   color: #fff;
-  font-size: 20px;
+  font-size: 12px;
   text-transform: uppercase;
   font-weight: 500;
   height: 60px;

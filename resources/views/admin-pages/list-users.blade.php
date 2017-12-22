@@ -32,7 +32,7 @@
 						<td><i class="fa fa-btc"></i> 0.0000000</td>
 						<td><i class="fa fa-database"></i> 0.0000000</td>
 						<td><span class="text-success">active</span></td>
-						<td><a class="btn-link" href="#">block client</a></td>
+						<td><a class="btn-link" href="#">freeze</a></td>
 					</tr>
 					@endforeach
 				</tbody>
