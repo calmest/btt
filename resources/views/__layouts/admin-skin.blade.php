@@ -100,25 +100,27 @@
             </div>
         </form>
         <ul class="nav menu">
-            <li><a href="javascript:void(0);"><i class="fa fa-database"></i> 351,244,750.00</a></li>
-            <li><a href="/admin"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-            <li><a href="/admin/btt/clients"><em class="fa fa-users">&nbsp;</em> Clients</a></li>
-            <li><a href="#"><em class="fa fa-calendar">&nbsp;</em> Wallets</a></li>
-            <li><a href="#"><em class="fa fa-bar-chart">&nbsp;</em> Trade Exchange</a></li>
-            <li><a href="#"><em class="fa fa-toggle-off">&nbsp;</em> Switch Miner</a></li>
-            <li><a href="#"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-database"></i> 0.0000000 </a></li>
+            <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="/admin/notifications"> <i class="fa fa-bell"></i>   Notifications</a></li>
+            <li><a href="/admin/clients">  <i class="fa fa-users"></i> Clients</a></li>
+            <li><a href="/admin/wallets">   <i class="fa fa-copy "></i> Wallets</a></li>
+            <li><a href="/admin/exchange"> <i class="fa fa-line-chart"></i> Exchange</a></li>
+            <li><a href="/admin/loans">    <i class="fa fa-navicon"></i> Loans (Lending)</a></li>
+            <li><a href="/admin/payments"> <i class="fa fa-money"></i> Payments</a></li>
+            <li><a href="/admin/transaction"> <i class="fa fa-cog"></i> Transaction & API</a></li>
             <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-                <em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+                <em class="fa fa-bank">&nbsp;</em> VAULTS <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
                 <ul class="children collapse" id="sub-item-1">
-                    <li><a class="" href="#">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1
+                    <li><a class="" href="/admin/vaults/1">
+                        <span class="fa fa-arrow-right">&nbsp;</span> BTC VUALT
                     </a></li>
-                    <li><a class="" href="#">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2
+                    <li><a class="" href="/admin/vaults/2">
+                        <span class="fa fa-arrow-right">&nbsp;</span> BTT VUALT
                     </a></li>
-                    <li><a class="" href="#">
-                        <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3
+                    <li><a class="" href="/admin/vaults/3">
+                        <span class="fa fa-arrow-right">&nbsp;</span> USD VUALT
                     </a></li>
                 </ul>
             </li>
@@ -142,14 +144,14 @@
     <script src="/js/custom.js"></script>
     <script>
         window.onload = function () {
-    var chart1 = document.getElementById("line-chart").getContext("2d");
-    window.myLine = new Chart(chart1).Line(lineChartData, {
-    responsive: true,
-    scaleLineColor: "rgba(0,0,0,.2)",
-    scaleGridLineColor: "rgba(0,0,0,.05)",
-    scaleFontColor: "#c5c7cc"
-    });
-};
+            var chart1 = document.getElementById("line-chart").getContext("2d");
+            window.myLine = new Chart(chart1).Line(lineChartData, {
+            responsive: true,
+            scaleLineColor: "rgba(0,0,0,.2)",
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleFontColor: "#c5c7cc"
+            });
+        };
     </script>
         
 </body>

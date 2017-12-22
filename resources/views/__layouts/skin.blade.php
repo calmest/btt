@@ -67,11 +67,11 @@
           <ul class="nav navbar-nav navbar-right" style="color:gold;">
             <!-- <li><a href="#contact-section" class="page-scroll"><i class="fa fa-money"></i> Wallet</a></li> -->
             <li><a href="#home" class="page-scroll"><i class="fa fa-copy"></i> <span style="color: gold;">GET A FREE WALLET</span></a></li>
-            <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> 
+            <li><a href="javascript:void(0);" class="page-scroll"><i class="fa fa-usd"></i> 
                 <span style="color: gold;"><span class="btx-usd"></span> 1BTC-USD </span></a>
             </li>
-            <li><a href="javascript:void(0);" class="page-scroll">x<i class="fa fa-btc"></i> 
-                <span style="color: gold;">1BTC-BTT 4.15877475  </span></a>
+            <li><a href="javascript:void(0);" class="page-scroll"><i class="fa fa-btc"></i> 
+                <span style="color: gold;">0.0000008 1BTC-BTT</span></a>
             </li>
             <li><a href="/create/account" class="page-scroll"><i class="fa fa-sign-in"></i> <span style="color: gold;">SIGN UP</span></a></li>
           </ul>
@@ -84,6 +84,10 @@
     <br /><br />
     <!-- Main-Content -->
     @yield('contents')
+
+    <div class="">
+        
+    </div>
     <!--// Main-Content-->
     <!-- copyright -->
     <div class="copyright-w3-agile">
@@ -92,7 +96,22 @@
     <!--// copyright -->
     <!--//background-->
     @yield('scripts')
-    <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script> -->
+    <script type="text/javascript">
+        $.get('/api/load/exchange', function (data){
+            // console.log(data);
+            $('.btx-usd').text(data.buy);
+        });
+
+        var refreshfeeds = function (){
+            $.get('/api/load/exchange', function (data){
+                // console.log(data);
+                $('.btx-usd').text(data.buy);
+            });
+        };
+
+        setInterval(refreshfeeds, 1000 * 30);
+    </script>
 </body>
 
 </html>

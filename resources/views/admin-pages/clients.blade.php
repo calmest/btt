@@ -1,11 +1,12 @@
 @extends('__layouts.admin-skin')
 
 @section('title')
-    BTT Admin | All Users
+    BTT Admin | Clients
 @endsection
 
+
 @section('contents')
-	<br />
+<br />
 	<div class="row">
 		<div class="col-md-12">
 			<table class="table">
@@ -41,6 +42,7 @@
 	</div>
 @endsection
 
+
 @section('scripts')
-<!-- scritps here -->
+
 @endsection

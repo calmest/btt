@@ -22,7 +22,10 @@
     "Buffer": "0.0.0",
     "blockchain.info": "^2.11.0",
     "fs": "0.0.1-security",
-    "luno-api": "^1.1.0"
+    "har": "^1.0.0",
+    "luno-api": "^1.1.0",
+    "net": "^1.0.2",
+    "option": "^0.2.4"
   },
   "name": "btt",
   "version": "1.0.1",

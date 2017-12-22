@@ -19,51 +19,78 @@ class AdminPagesController extends Controller
     public function index()
     {
     	# code...
-    	return view('admin-pages.index');
+    	return view('admin-pages.dashboard');
     }
 
     // get admin index page
     public function dashboard()
     {
         # code...
-        return view('admin-pages.index');
+        return view('admin-pages.dashboard');
     }
 
-    // get admin index page
-    public function error()
+    // get payments
+    public function payments()
     {
-    	# code...
+    	# return payments view
+        return view('admin-pages.payments');
     }
 
-    // get admin index page
+    // get clients  page
     public function clients()
     {
-    	# code...
+    	# clients
+        $clients = Client::all();
+        return view('admin-pages.clients', compact('clients'));
     }   
 
-    // get admin index page
+    // get notifications page
     public function notifications()
     {
-    	# code...
+    	# notifications and alerst
+        return view('admin-pages.notifications');
     }   
 
-    // get admin index page
-    public function exchanges()
+    // get exchanges page
+    public function exchange()
     {
-    	# code...
+    	# exchange
+        return view('admin-pages.exchange');
+    }  
+
+    // get exchanges page
+    public function transactions()
+    {
+        # exchange
+        return view('admin-pages.transactions');
     }   
 
-    // get admin index page
-    public function rewards()
+    // get loan & lending page page
+    public function loans()
     {
-    	# code...
+    	# loans
+        return view('admin-pages.loans');
     }
 
     // get all users
-    public function allUsers()
+    public function charts()
     {
-        $clients = Client::all();
-        return view('admin-pages.list-users', compact('clients'));
+        # load graph
+        return view('admin-pages.chars');
+    }
+
+    // get all users
+    public function wallets()
+    {
+        # load graph
+        return view('admin-pages.wallets');
+    }
+
+    // get all users
+    public function vaults($id)
+    {
+        # load graph
+        return view('admin-pages.vaults');
     }
 
     // get admin logout page

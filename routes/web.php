@@ -52,12 +52,19 @@ Route::get('/account/logout',       'ClientHomeController@logout')->name('exit')
 */
 
 // Admin Pages Controllers
-Route::get('/admin',           'AdminPagesController@index');
-Route::get('/admin/dashboard', 'AdminPagesController@dashboard');
-Route::get('/admin/error',     'AdminPagesController@error');
-Route::get('/admin/clients',   'AdminPagesController@clients');
-Route::get('/admin/btt/clients',     'AdminPagesController@allUsers');
-Route::get('/admin/logout',    'AdminPagesController@logout');
+Route::get('/admin',             'AdminPagesController@index');
+Route::get('/admin/dashboard',   'AdminPagesController@dashboard');
+Route::get('/admin/payments',    'AdminPagesController@payments');
+Route::get('/admin/loans',       'AdminPagesController@loans');
+Route::get('/admin/wallets',     'AdminPagesController@wallets');
+Route::get('/admin/clients',     'AdminPagesController@clients');
+Route::get('/admin/exchange',    'AdminPagesController@exchange');
+Route::get('/admin/vaults/{id}', 'AdminPagesController@vaults');
+Route::get('/admin/transaction', 'AdminPagesController@transactions');
+Route::get('/admin/charts',      'AdminPagesController@charts');
+Route::get('/admin/notifications', 'AdminPagesController@notifications');
+Route::get('/admin/logout',      'AdminPagesController@logout');
+
 
 
 // Admin Authentications 
