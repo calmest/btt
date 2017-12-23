@@ -98,6 +98,10 @@ Route::get('/load/trade/history', 'BitxController@loadLastTrade');
 // Route::get('/load/ticker',  'PoloniexController@loadTicker');
 
 
+Route::get('/reset-database', function (){
+	Artisan::call('migrate:refresh');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
