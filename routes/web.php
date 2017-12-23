@@ -67,6 +67,11 @@ Route::get('/admin/logout',      'AdminPagesController@logout');
 
 
 
+// Admin pages for all post request and reseponse request
+Route::post('/admin/update/vault', 'AdminFactoryController@addBtt');
+Route::get('/admin/load/vault', 'AdminFactoryController@loadBtt');
+
+
 // Admin Authentications 
 Route::get('/admin/login',   'AdminLoginController@showLogin')->name('login-form');
 Route::post('/admin/login',   'AdminLoginController@doLogin')->name('login-action');

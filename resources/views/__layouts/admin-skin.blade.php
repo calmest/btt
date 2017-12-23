@@ -8,6 +8,9 @@
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/datepicker3.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
+
+    <!-- Added jquery -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
     
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -100,7 +103,7 @@
             </div>
         </form>
         <ul class="nav menu">
-            <li><a href="javascript:void(0);"><i class="fa fa-database"></i> 0.0000000 </a></li>
+            <li><a href="javascript:void(0);"><i class="fa fa-database"></i> <span class="asset-bal"></span></a></li>
             <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a href="/admin/notifications"> <i class="fa fa-bell"></i>   Notifications</a></li>
             <li><a href="/admin/clients">  <i class="fa fa-users"></i> Clients</a></li>
@@ -134,24 +137,40 @@
         
     </div>  <!--/.main-->
     @yield('scripts')
-    <script src="/js/jquery-1.11.1.min.js"></script>
+    
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/chart.min.js"></script>
     <script src="/js/chart-data.js"></script>
     <script src="/js/easypiechart.js"></script>
     <script src="/js/easypiechart-data.js"></script>
     <script src="/js/bootstrap-datepicker.js"></script>
-    <script src="/js/custom.js"></script>
+    <!-- <script src="/js/custom.js"></script> -->
     <script>
-        window.onload = function () {
-            var chart1 = document.getElementById("line-chart").getContext("2d");
-            window.myLine = new Chart(chart1).Line(lineChartData, {
-            responsive: true,
-            scaleLineColor: "rgba(0,0,0,.2)",
-            scaleGridLineColor: "rgba(0,0,0,.05)",
-            scaleFontColor: "#c5c7cc"
+        $.get('/admin/load/vault', function (data){
+            // console.log(data);
+            $(".assets").html('');
+            $.each(data, function (index, value){
+                $(".assets").append(`
+                    <tr>
+                        <td>`+value.id+`</td>
+                        <td>`+value.type+`</td>
+                        <td>`+value.amount+`</td>
+                        <td>`+value.balance+`</td>
+                        <td>`+value.date+`</td>
+                    </tr>
+                `);
+                $(".asset-bal").text(value.amount);
             });
-        };
+        });
+        // window.onload = function () {
+        //     var chart1 = document.getElementById("line-chart").getContext("2d");
+        //     window.myLine = new Chart(chart1).Line(lineChartData, {
+        //     responsive: true,
+        //     scaleLineColor: "rgba(0,0,0,.2)",
+        //     scaleGridLineColor: "rgba(0,0,0,.05)",
+        //     scaleFontColor: "#c5c7cc"
+        //     });
+        // };
     </script>
         
 </body>

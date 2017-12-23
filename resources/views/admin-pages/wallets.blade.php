@@ -11,8 +11,16 @@
 			<h1>Wallets</h1>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="thumbnail">
+				<span style="font-size: 56px">
+					<i class="fa fa-database"></i> <span class="asset-bal"></span>
+				</span>
+			</div>
+		</div>
+	</div>
 @endsection
-
 
 @section('scripts')
 
