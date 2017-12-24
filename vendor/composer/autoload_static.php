@@ -337,12 +337,14 @@ class ComposerStaticInit1b9510c2ed44cc1c44b181613567f3dc
     );
 
     public static $classMap = array (
+        'App\\Activation' => __DIR__ . '/../..' . '/app/Activation.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Bitx' => __DIR__ . '/../..' . '/app/Bitx.php',
         'App\\Client' => __DIR__ . '/../..' . '/app/Client.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminAuthController.php',
+        'App\\Http\\Controllers\\AdminFactoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminFactoryController.php',
         'App\\Http\\Controllers\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminLoginController.php',
         'App\\Http\\Controllers\\AdminPagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminPagesController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

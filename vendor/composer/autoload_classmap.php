@@ -6,12 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Activation' => $baseDir . '/app/Activation.php',
     'App\\Admin' => $baseDir . '/app/Admin.php',
     'App\\Bitx' => $baseDir . '/app/Bitx.php',
     'App\\Client' => $baseDir . '/app/Client.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminAuthController' => $baseDir . '/app/Http/Controllers/AdminAuthController.php',
+    'App\\Http\\Controllers\\AdminFactoryController' => $baseDir . '/app/Http/Controllers/AdminFactoryController.php',
     'App\\Http\\Controllers\\AdminLoginController' => $baseDir . '/app/Http/Controllers/AdminLoginController.php',
     'App\\Http\\Controllers\\AdminPagesController' => $baseDir . '/app/Http/Controllers/AdminPagesController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

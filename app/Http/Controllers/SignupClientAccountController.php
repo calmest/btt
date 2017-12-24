@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\AccountActivation;
+use App\Activation;
 use App\Client;
 use App\Wallet;
 
@@ -51,6 +53,34 @@ class SignupClientAccountController extends Controller
                 $clients->email    = $email;
                 $clients->password = $pass;
                 $clients->save();
+
+                // Send activation email 
+                $token   = rand(000, 999).'-'.rand(222, 888);
+                $status  = 'inactive';
+
+                // save information
+                $find_id = Client::where('email', $email)->first();
+                $user_id = $find_id->id;
+
+                // updated activation
+                $activation = new Activation();
+                $activation->user_id = $user_id;
+                $activation->status  = $status;
+                $activation->token   = $token;
+                $activation->save();
+
+                // fetch activation
+                $active_details = Activation::where('user_id', $user_id)->first();
+                $data = array(
+                    'id'    => $active_details->id,
+                    'name'  => $name,
+                    'token' => $active_details->token
+                );
+
+                // Fire a mail
+                // send User an Email
+                \Mail::to($email)->send(new AccountActivation($data));
+
 
                 // send clients a signup successfull messages
                 $data = array(

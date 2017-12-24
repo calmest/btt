@@ -22,6 +22,10 @@ Route::post('/create/account', 'SignupClientAccountController@doSignup')->name('
 Route::get('/create/account', 'SignupClientAccountController@signupForm')->name('signup-form');
 
 
+// Activate Account
+Route::get('/activation/by/email/', 'AccountActivationController@activate');
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes Client Home Controller
