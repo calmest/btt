@@ -9,7 +9,7 @@
     <link href="/css/datepicker3.css" rel="stylesheet">
     <link href="/css/client-style.css" rel="stylesheet">
     <link rel="icon" href="/images/ico-set.png">
-    
+    <script src="/js/jquery-1.11.1.min.js"></script>
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -66,13 +66,13 @@
                 <em class="fa fa-navicon">&nbsp;</em> Wallets <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
                 </a>
                 <ul class="children collapse" id="sub-item-1">
-                    <li><a class="/account/btt-wallet" href="#">
+                    <li><a class="" href="/account/wallet/">
                         <span class="fa fa-arrow-right">&nbsp;</span> <i class="fa fa-bitcoin"></i> BTT 
                     </a></li>
-                    <li><a class="/account/eth-wallet" href="#">
+                    <li><a class="" href="/account/wallet/">
                         <span class="fa fa-arrow-right">&nbsp;</span> <i class="fa fa-bitcoin"></i> ETH 
                     </a></li>
-                    <li><a class="/account/btc-wallet" href="#">
+                    <li><a class="" href="/account/wallet/">
                         <span class="fa fa-arrow-right">&nbsp;</span> <i class="fa fa-bitcoin"></i> BTC 
                     </a></li>
                 </ul>
@@ -85,7 +85,6 @@
         @yield('contents')
     </div>  <!--/.main-->
     @yield('scripts')
-    <script src="/js/jquery-1.11.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/chart.min.js"></script>
     <script src="/js/chart-data.js"></script>
@@ -94,15 +93,15 @@
     <script src="/js/bootstrap-datepicker.js"></script>
     <script src="/js/custom.js"></script>
     <script>
-        window.onload = function () {
-            var chart1 = document.getElementById("line-chart").getContext("2d");
-            window.myLine = new Chart(chart1).Line(lineChartData, {
-            responsive: true,
-            scaleLineColor: "rgba(0,0,0,.2)",
-            scaleGridLineColor: "rgba(0,0,0,.05)",
-            scaleFontColor: "#c5c7cc"
-            });
-        };
+        // window.onload = function () {
+        //     var chart1 = document.getElementById("line-chart").getContext("2d");
+        //     window.myLine = new Chart(chart1).Line(lineChartData, {
+        //     responsive: true,
+        //     scaleLineColor: "rgba(0,0,0,.2)",
+        //     scaleGridLineColor: "rgba(0,0,0,.05)",
+        //     scaleFontColor: "#c5c7cc"
+        //     });
+        // };
     </script>
         
 </body>

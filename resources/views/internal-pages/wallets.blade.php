@@ -5,6 +5,7 @@
 @endsection
 
 @section('contents')
+{{ csrf_field() }}
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="#">
@@ -18,6 +19,26 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>Wallets</h1>
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <div class="error_msg"></div>
+                        <div class="success_msg"></div>
+                        <div class="wallet-btt"></div>
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <div class="wallet">
+                            you do not have any btt wallet yet !
+                        </div>
+                        <button onclick="xcreate()" class="btn btn-defualt"><i class="fa fa-plus"></i> New BTT Wallet</button>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="wallet">
+                            you do not have any btt wallet yet !
+                        </div>
+                        <button onclick="xcreate()" class="btn btn-defualt"><i class="fa fa-plus"></i> New BTT Wallet</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -26,9 +47,62 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $('#create-account').click(function (){
-            window.location.href = '/create/account';
+        $.get('/client/load/wallets', function (e){
+            // console.log(e);
+            if(e.status == 'info'){
+                $(".wallet-btt").html(`
+                    <button class="btn btn-defualt" onclick="createBTT()"> 
+                        <i class="fa fa-plus"></i> New BTT Wallet
+                    </button>
+                `);
+                $(".success_msg").html(`
+                    `+e.message+`
+                `);
+            }else{
+                $(".wallet-btt").html(`
+                    <div>
+                        <i class="fa fa-copy"></i> `+e.addr+` <br />
+                        <i class="fa fa-database"></i> `+e.bal+` 
+                    </div>
+                `);
+            }
         });
+
+        function xcreate(){
+            alert('wallet services is currently not available at the moments ');
+        };
+
+        function createBTT(){
+            var token = $("input[name=_token]").val();
+
+            $.ajax({
+                type: "post",
+                url: "/client/create/wallet",
+                data: {
+                    _token:token
+                },
+                success: function (data){
+                    console.log(data);
+                    if(data.status == 'error'){
+                        $(".error_msg").html(`
+                            <div class="alert alert-danger">
+                                <p class="text-danger">`+data.message+`</p>
+                            </div>
+                        `);
+                    }else{
+                        $(".error_msg").html(`
+                            <div class="alert alert-success">
+                                <p class="text-success">`+data.message+`</p>
+                            </div>
+                        `);
+                    }
+                },
+                error: function (data){
+                    console.log(data);
+                    alert('fail to create wallet, try again !');
+                }
+            });
+        }
     </script>
 @endsection
 

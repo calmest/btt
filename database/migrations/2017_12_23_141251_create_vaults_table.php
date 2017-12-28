@@ -17,7 +17,7 @@ class CreateVaultsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->decimal('amount', 15, 8);
-            $table->string('balance')->nullable();
+            $table->string('rate')->nullable();
             $table->timestamps();
         });
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vault;
+use App\Client;
+use App\Wallet;
 
 class AdminFactoryController extends Controller
 {
@@ -14,7 +16,7 @@ class AdminFactoryController extends Controller
     	// request from form
     	$type    = $request->type; 
     	$amount  = $request->amount;
-    	$balance = 0.0000000;
+    	$rate    = 0.0000000;
 
 
     	// check if any existed
@@ -24,7 +26,7 @@ class AdminFactoryController extends Controller
 	    	$btt_vault = new Vault();
 	    	$btt_vault->type = $type;
 	    	$btt_vault->amount = $amount;
-	    	$btt_vault->balance = $balance;
+	    	$btt_vault->rate = $rate;
 	    	$btt_vault->save();
 
 	    	$data = array(
@@ -39,7 +41,7 @@ class AdminFactoryController extends Controller
 
             $limits = 15.00000000;
 
-            if($vaults->balance > $limits){
+            if($vaults->amount > $limits){
                 $data = array(
                     'status'  => 'error',
                     'message' => 'you have exceeded total distribution'
@@ -49,7 +51,7 @@ class AdminFactoryController extends Controller
                 $updated_vault = Vault::find($vault_id);
                 $updated_vault->type = $type;
                 $updated_vault->amount = $updated_vault->amount + $amount;
-                $updated_vault->balance = $updated_vault->balance + $balance;
+                $updated_vault->rate = $updated_vault->rate + $rate;
                 $updated_vault->update();
 
                 $data = array(
@@ -58,9 +60,6 @@ class AdminFactoryController extends Controller
                 );
             }	
     	}
-
-
-    	
 
     	// return response
     	return response()->json($data);
@@ -79,7 +78,7 @@ class AdminFactoryController extends Controller
     			'id'      => $btt->id,
     			'type'    => $btt->type,
     			'amount'  => $btt->amount,
-    			'balance' => $btt->balance,
+    			'rate'    => $btt->rate,
     			'date'    => $btt->updated_at->diffForHumans()
 
     		);
@@ -89,5 +88,45 @@ class AdminFactoryController extends Controller
 
     	// return response
     	return response()->json($pair_box);
+    }
+
+    // load all users 
+    public function clients()
+    {
+        # code...
+        $clients = Client::all();
+
+        $client_box = [];
+        foreach ($clients as $users) {
+            // get client wallets
+            $wallets = Wallet::where('user_id', $users->id)->first();
+            if($wallets == null){
+                $data = array(
+                    'id'     => $users->id,
+                    'name'   => $users->name,
+                    'email'  => $users->email,
+                    'btt'    => 0.00000000,
+                    'btc'    => 0.00000000,
+                    'eth'    => 0.00000000,
+                    'status' => 'active',
+                    'date'   => $users->created_at->diffForHumans()
+                );
+            }else{
+                $data = array(
+                    'id'     => $users->id,
+                    'name'   => $users->name,
+                    'email'  => $users->email,
+                    'btt'    => $wallets->balance,
+                    'btc'    => 0.00000000,
+                    'eth'    => 0.00000000,
+                    'status' => 'active',
+                    'date'   => $users->created_at->diffForHumans()
+                );
+            }
+
+            array_push($client_box, $data);
+        }
+
+        return response()->json($client_box);
     }
 }

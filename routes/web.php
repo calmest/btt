@@ -39,6 +39,11 @@ Route::get('/activation/by/email/', 'AccountActivationController@activate');
 
 Route::get('/account/dashboard',    'ClientHomeController@dashboard');
 Route::get('/account/wallet',       'ClientHomeController@wallets');
+Route::get('/account/wallet/{name}', 'ClientHomeController@showWallets');
+
+Route::get('/client/load/wallets',   'ClientHomeController@loadWallet');
+Route::post('/client/create/wallet', 'ClientHomeController@createWallet');
+
 Route::get('/account/price-alert',  'ClientHomeController@alert');
 Route::get('/account/transaction',  'ClientHomeController@transactions')->name('transactions');
 Route::get('/account/exchange',     'ClientHomeController@exchange')->name('exchange');
@@ -74,6 +79,7 @@ Route::get('/admin/logout',      'AdminPagesController@logout');
 // Admin pages for all post request and reseponse request
 Route::post('/admin/update/vault', 'AdminFactoryController@addBtt');
 Route::get('/admin/load/vault', 'AdminFactoryController@loadBtt');
+Route::get('/admin/load/clients', 'AdminFactoryController@clients');
 
 
 // Admin Authentications 

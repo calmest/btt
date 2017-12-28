@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\Wallet;
 use Auth;
 
 class ClientHomeController extends Controller
@@ -27,6 +28,76 @@ class ClientHomeController extends Controller
     {
     	# code...
     	return view('internal-pages.wallets');
+    }
+
+    public function loadWallet()
+    {
+        # load users wallet
+        $user_id = Auth::user()->id;
+
+        # check wallets
+        $wallets = Wallet::where('user_id', $user_id)->first();
+
+        if($wallets == null){
+
+            $data = array(
+                'status'  => 'info',
+                'message' => 'you do not have any btt wallet yet ! '
+            );
+        }else{
+            $data = array(
+                'id'   => $wallets->id,
+                'addr' => $wallets->address,
+                'bal'  => $wallets->balance
+            );
+        }
+
+        return response()->json($data);
+    }
+
+    // create wallets
+    public function createWallet()
+    {
+        # load users wallet
+        $user_id = Auth::user()->id;
+
+        # check if user is trying to duplicate wallets
+        $already_exits = Wallet::where('user_id', $user_id)->first();
+        if($already_exits !== null){
+            # return message response
+            $data = array(
+                'status' => 'error',
+                'message' => 'wallet can not be duplicated !'
+            );
+        }else{
+
+            # generate Address
+            $length = 50;
+            $addr   = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+
+            # code...
+            $wallets           = new Wallet();
+            $wallets->user_id  = $user_id;
+            $wallets->address  = $addr;
+            $wallets->balance  = 0.000000000;
+            $wallets->save();
+
+            # return message response
+            $data = array(
+                'status' => 'success',
+                'message' => 'wallet successfully created !'
+            );
+
+        }
+
+        return response()->json($data);
+    }
+
+    // show wallets
+    public function showWallets($name)
+    {
+        # code...
+        return view('internal-pages.wallets');
     }
 
     // init users informations

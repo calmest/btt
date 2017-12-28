@@ -155,7 +155,7 @@
                         <td>`+value.id+`</td>
                         <td>`+value.type+`</td>
                         <td>`+value.amount+`</td>
-                        <td>`+value.balance+`</td>
+                        <td>`+value.rate+`</td>
                         <td>`+value.date+`</td>
                     </tr>
                 `);
