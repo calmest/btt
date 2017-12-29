@@ -74,6 +74,7 @@
                 <span style="color: gold;">0.0000008 1BTC-BTT</span></a>
             </li>
             <li><a href="/create/account" class="page-scroll"><i class="fa fa-sign-in"></i> <span style="color: gold;">SIGN UP</span></a></li>
+            <li><a href="/login/account" class="page-scroll"><i class="fa fa-sign-out"></i> <span style="color: gold;">LOGIN</span></a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse --> 

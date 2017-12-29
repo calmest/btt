@@ -66,16 +66,29 @@
     <script type="text/javascript">
         $.get('/client/load/wallets', function (e){
             console.log(e);
-            $(".wallet-btt").html(`
+            if(e.status !== 'info'){
+                $(".wallet-btt").html(`
+                    <div>
+                        <h2>BTT</h2>
+                        <div style="padding: 2em;font-size: 21px;"><i class="fa fa-database"></i> `+e.bal+` </div>
+                        <button class="btn btn-default">Buy</button> <button class="btn btn-default">Sell</button>
+                         <button class="btn btn-default">Send</button>
+                        <br />
+                    </div>
+                    <br /><br />
+                `);
+            }else{
+                $(".wallet-btt").html(`
                 <div>
                     <h2>BTT</h2>
-                    <div style="padding: 2em;font-size: 21px;"><i class="fa fa-database"></i> `+e.bal+` </div>
+                    <div style="padding: 2em;font-size: 21px;"><i class="fa fa-database"></i> 0.00000000 </div>
                     <button class="btn btn-default">Buy</button> <button class="btn btn-default">Sell</button>
                      <button class="btn btn-default">Send</button>
                     <br />
                 </div>
                 <br /><br />
             `);
+            }
         });
     </script>
 @endsection

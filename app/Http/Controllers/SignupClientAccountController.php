@@ -35,9 +35,6 @@ class SignupClientAccountController extends Controller
     			'status'  => 'error',
     			'message' => 'This email already exits !'
     		);
-
-    		// check for response
-    		return response()->json($data);
     	}else{
     	   // check if users already exits 
     	   $already_user_exits = Client::where('name', $name)->first();
@@ -87,19 +84,16 @@ class SignupClientAccountController extends Controller
                     'status'  => 'success',
                     'message' => 'Registration successfull !, A confirmation link has been sent to '.$email
                 );
-                
-                // check for response
-                return response()->json($data);
             }else{
 
                 $data = array(
                     'status'  => 'error',
                     'message' => 'This user already exits !'
                 );
-                
-                // check for response
-                return response()->json($data);
             }
         }
+
+        // check for response
+        return response()->json($data);
     }
 }

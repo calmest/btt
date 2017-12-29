@@ -99,13 +99,13 @@ class AdminFactoryController extends Controller
         $client_box = [];
         foreach ($clients as $users) {
             // get client wallets
-            $wallets = Wallet::where('user_id', $users->id)->first();
+            $wallets = Wallet::where('client_id', $users->id)->first();
             if($wallets == null){
                 $data = array(
                     'id'     => $users->id,
                     'name'   => $users->name,
                     'email'  => $users->email,
-                    'btt'    => 0.00000000,
+                    'btt'    => '0.00000000',
                     'btc'    => 0.00000000,
                     'eth'    => 0.00000000,
                     'status' => 'active',

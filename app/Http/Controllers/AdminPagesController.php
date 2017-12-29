@@ -41,6 +41,7 @@ class AdminPagesController extends Controller
     {
     	# clients
         $clients = Client::all();
+        
         return view('admin-pages.clients', compact('clients'));
     }   
 

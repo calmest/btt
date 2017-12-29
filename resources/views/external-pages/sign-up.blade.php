@@ -26,8 +26,11 @@
             <div class="remember-section-wthree">
                 <div class="clear"> </div>
             </div>
-            <button id="create-account" style="padding: 0.8em;border-radius: 5px;">Create Account</button>
+            <button id="create-account" style="padding: 0.8em;border-radius: 5px;">
+                Create Account
+            </button>
             <br /><br /><br />
+            <div class="loader" style="display: none;"><img src="/svg/three-dots.svg" height="20" width="20"></div>
             <div class="error-msg"></div>
             <div class="success-msg"></div>
         </form>
@@ -49,6 +52,8 @@
     <script type="text/javascript">
         function checkClient()
         {
+            $('.loader').show();
+            $('.create-account').hide();
             // get form data
             var name  = $("input[name=name]").val(); 
             var email = $("input[name=email]").val();
@@ -90,13 +95,14 @@
                             </div>
                         `);
                     }
+                    $('.loader').hide();
+                    $('.create-account').show();
                 },
                 error: function (data){
                     alert('Fail to process login request');
                     console.log(data);
-                },
-                then: function (){
-                    
+                    $('.loader').hide();
+                    $('.create-account').show();
                 }
             });
 
