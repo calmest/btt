@@ -20,23 +20,26 @@
             <div class="col-md-12">
                 <h1>Wallets</h1>
                 <div class="row">
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-4" style="font-size: 14px;">
                         <div class="error_msg"></div>
                         <div class="success_msg"></div>
                         <div class="wallet-btt"></div>
                         
                     </div>
-                    <div class="col-md-4">
+                </div>
+                <br /><br />
+                <div class="row">
+                    <div class="col-md-4 lead">
                         <div class="wallet">
-                            you do not have any btt wallet yet !
+                            you do not have any BTC wallet yet !
                         </div>
-                        <button onclick="xcreate()" class="btn btn-defualt"><i class="fa fa-plus"></i> New BTT Wallet</button>
+                        <button onclick="xcreate()" class="btn btn-defualt"><i class="fa fa-plus"></i> New BTC Wallet</button>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 lead">
                         <div class="wallet">
-                            you do not have any btt wallet yet !
+                            you do not have any ETH wallet yet !
                         </div>
-                        <button onclick="xcreate()" class="btn btn-defualt"><i class="fa fa-plus"></i> New BTT Wallet</button>
+                        <button onclick="xcreate()" class="btn btn-defualt"><i class="fa fa-plus"></i> New ETH Wallet</button>
                     </div>
                 </div>
             </div>
@@ -61,8 +64,17 @@
             }else{
                 $(".wallet-btt").html(`
                     <div>
-                        <i class="fa fa-copy"></i> `+e.addr+` <br />
-                        <i class="fa fa-database"></i> `+e.bal+` 
+                    <table class="table">
+                        <tr>
+                            <td>Address</td>
+                            <td><i class="fa fa-copy"></i> `+e.addr+`</td>
+                        </tr>
+                        <tr>
+                            <td>Balance</td>
+                            <td><i class="fa fa-database"></i> `+e.bal+` </td>
+                        </tr>
+                    </table>
+                        
                     </div>
                 `);
             }
