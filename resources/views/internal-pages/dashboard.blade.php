@@ -26,18 +26,24 @@
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <br />
-                    <h2>BTC Wallet</h2>
+                    <h2>BTC</h2>
                    	<div style="padding: 2em;font-size: 21px;"><i class="fa fa-btc"></i> 0.00000000</div>
+                    <button class="btn btn-default">Buy</button> <button class="btn btn-default">Sell</button>
+                    <button class="btn btn-default">Send</button>
                 </div>
+                <br />
             </div>
         </div>
         <div class="col-xs-6 col-md-3">
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <br />
-                    <h2>USD Wallet</h2>
+                    <h2>USD</h2>
                     <div style="padding: 2em;font-size: 21px;"><i class="fa fa-usd"></i> 0.00000000</div>
+                    <button class="btn btn-default">Buy</button> <button class="btn btn-default">Sell</button>
+                    <button class="btn btn-default">Send</button>
                 </div>
+                <br />
             </div>
         </div>
 
@@ -45,9 +51,12 @@
             <div class="panel panel-default">
                 <div class="panel-body easypiechart-panel">
                     <br />
-                    <h2>ETH Wallet</h2>
+                    <h2>ETH</h2>
                     <div style="padding: 2em;font-size: 21px;"><i class="fa fa-database"></i> 0.000000</div>
+                    <button class="btn btn-default">Buy</button> <button class="btn btn-default">Sell</button>
+                    <button class="btn btn-default">Send</button>
                 </div>
+                <br />
             </div>
         </div>
     </div><!--/.row-->
@@ -59,9 +68,13 @@
             console.log(e);
             $(".wallet-btt").html(`
                 <div>
-                    <h2>BTT Wallet</h2>
+                    <h2>BTT</h2>
                     <div style="padding: 2em;font-size: 21px;"><i class="fa fa-database"></i> `+e.bal+` </div>
+                    <button class="btn btn-default">Buy</button> <button class="btn btn-default">Sell</button>
+                     <button class="btn btn-default">Send</button>
+                    <br />
                 </div>
+                <br /><br />
             `);
         });
     </script>
