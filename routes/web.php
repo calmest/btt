@@ -59,10 +59,10 @@ Route::post('/account/sell/btt', 'ClientHomeController@sellBtt')->name('sell-btt
 Route::post('/account/buy/btt',  'ClientHomeController@buyBtt')->name('buy-btt');
 Route::post('/account/send/btt', 'ClientHomeController@sendBtt')->name('send-btt');
 
-
 // Loan request
 Route::post('/account/request/btt', 'ClientHomeController@requestLoan')->name('request-btt');
 
+// Load charts and logout 
 Route::get('/account/charts', 'ClientHomeController@charts')->name('charts');
 Route::get('/account/logout', 'ClientHomeController@logout')->name('exit');
 

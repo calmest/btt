@@ -206,25 +206,33 @@ class ClientHomeController extends Controller
     // request buy 
     public function buyBtt()
     {
+        // amount
+        $amount = $request->amount;
 
     }
 
     // request sell 
     public function sellBtt()
     {
-
+        // amount
+        $amount = $request->amount;
     }
 
     // request send
     public function sendBtt()
     {
+        // amount
+        $amount    = $request->amount;
+        $receiver  = $request->address;
+        $from      = $request->from;
 
     }
 
     // request loan
     public function requestLoan()
     {
-
+        // amount
+        $amount = $request->amount;
     }
 
     // show wallets
