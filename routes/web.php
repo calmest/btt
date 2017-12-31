@@ -48,9 +48,23 @@ Route::get('/account/price-alert',  'ClientHomeController@alert');
 Route::get('/account/transaction',  'ClientHomeController@transactions')->name('transactions');
 Route::get('/account/exchange',     'ClientHomeController@exchange')->name('exchange');
 Route::get('/account/setting',      'ClientHomeController@setting')->name('setting');
+
 // Route::get('/account/chart/{pair}', 'ClientHomeController@charts')->name('charts');
+Route::get('/account/payment/history', 'ClientHomeController@loadPayments')->name('load-payments');
+Route::get('/account/transaction/history', 'ClientHomeController@loadTransactions')->name('load-transactions');
+
+
+// Process BTT chain
+Route::post('/account/sell/btt', 'ClientHomeController@sellBtt')->name('sell-btt');
+Route::post('/account/buy/btt',  'ClientHomeController@buyBtt')->name('buy-btt');
+Route::post('/account/send/btt', 'ClientHomeController@sendBtt')->name('send-btt');
+
+
+// Loan request
+Route::post('/account/request/btt', 'ClientHomeController@requestLoan')->name('request-btt');
+
 Route::get('/account/charts', 'ClientHomeController@charts')->name('charts');
-Route::get('/account/logout',       'ClientHomeController@logout')->name('exit');
+Route::get('/account/logout', 'ClientHomeController@logout')->name('exit');
 
 
 /*
