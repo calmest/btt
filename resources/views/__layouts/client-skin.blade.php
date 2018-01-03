@@ -9,7 +9,7 @@
     <link href="/css/datepicker3.css" rel="stylesheet">
     <link href="/css/client-style.css" rel="stylesheet">
     <link rel="icon" href="/images/ico-set.png">
-    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/js/jquery.js"></script>
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!--[if lt IE 9]>

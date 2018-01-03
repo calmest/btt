@@ -21,13 +21,14 @@
     <link rel="icon" href="/images/ico-set.png">
     
     <!-- jQuery library -->
+    <script src="/js/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <!-- Font-Awesome-CSS -->
     <link href="/css/font-awesome.css" rel="stylesheet">
     <!--// Font-Awesome-CSS -->

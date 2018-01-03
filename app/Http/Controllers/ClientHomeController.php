@@ -109,7 +109,7 @@ class ClientHomeController extends Controller
             $payments->to      = $addr;
             $payments->from    = $from;
             $payments->amount  = $ico;
-            $payments->save()
+            $payments->save();
 
             # return message response
             $data = array(
@@ -209,6 +209,10 @@ class ClientHomeController extends Controller
         // amount
         $amount = $request->amount;
 
+
+        // check if user have loan already
+
+
     }
 
     // request sell 
@@ -229,10 +233,47 @@ class ClientHomeController extends Controller
     }
 
     // request loan
-    public function requestLoan()
+    public function requestLoan(Request $request)
     {
         // amount
-        $amount = $request->amount;
+        $user_id  = Auth::user()->id;
+        $amount   = $request->amount;
+        $rate     = $request->rate;
+        $interest = $request->interest;
+        $status   = "pending";
+
+        // maturity date
+        $maturity = 3600 * 30;
+        $maturity_date = time() + $maturity;
+
+        $already_loan = Loan::where('user_id', $user_id)->first();
+        if($already_loan == null){
+            
+            $loan                = new Loan();
+            $loan->user_id       = $user_id;
+            $loan->amount        = $amount;
+            $loan->rate          = $rate;
+            $loan->interest      = $interest;
+            $loan->status        = $status;
+            $loan->maturity_date = $maturity_date;
+            $loan->save();
+
+            $msg = 'You loan request has been sent !, balance will be updated as soon as the loan request is accepted';
+            $data = array(
+                'status'  => 'success',
+                'message' => $msg
+            );
+
+        }else{
+            $msg = 'You still have an existing loan of '.$already_loan->amount.', you can not request another loan';
+            $data = array(
+                'status'  => 'error',
+                'message' => $msg
+            );
+        }
+
+        // request loan
+        return response()->json($data);
     }
 
     // show wallets

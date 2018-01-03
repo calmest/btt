@@ -20,6 +20,7 @@ class CreateLoansTable extends Migration
             $table->decimal('rate', 15, 8);
             $table->decimal('interest', 15, 8);
             $table->string('status');
+            $table->string('maturity_date');
             $table->timestamps();
         });
     }

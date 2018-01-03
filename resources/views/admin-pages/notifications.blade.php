@@ -14,5 +14,10 @@
 @endsection
 
 @section('scripts')
-
+	<script type="text/javascript">
+		$.get('/load/loan/request', function(data) {
+			/*optional stuff to do after success */
+			console.log(data);
+		});
+	</script>
 @endsection

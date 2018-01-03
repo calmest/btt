@@ -21,10 +21,8 @@ Route::post('/login/account', 'LoginClientAccountController@loginUser')->name('s
 Route::post('/create/account', 'SignupClientAccountController@doSignup')->name('sigup-user');
 Route::get('/create/account', 'SignupClientAccountController@signupForm')->name('signup-form');
 
-
 // Activate Account
 Route::get('/activation/by/email/', 'AccountActivationController@activate');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +58,7 @@ Route::post('/account/buy/btt',  'ClientHomeController@buyBtt')->name('buy-btt')
 Route::post('/account/send/btt', 'ClientHomeController@sendBtt')->name('send-btt');
 
 // Loan request
-Route::post('/account/request/btt', 'ClientHomeController@requestLoan')->name('request-btt');
+Route::post('/send/loan/request', 'ClientHomeController@requestLoan')->name('request-btt');
 
 // Load charts and logout 
 Route::get('/account/charts', 'ClientHomeController@charts')->name('charts');
