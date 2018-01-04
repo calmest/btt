@@ -106,8 +106,8 @@
         <ul class="nav menu">
             <li><a href="javascript:void(0);"><i class="fa fa-database"></i> <span class="asset-bal"></span></a></li>
             <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="/admin/notifications"> <i class="fa fa-bell"></i>   Notifications <span class="total_clients"></span></a></li>
-            <li><a href="/admin/clients">  <i class="fa fa-users"></i> Clients  <span class="total_loans"></span></a></li>
+            <li><a href="/admin/notifications"> <i class="fa fa-bell"></i>   Notifications <span class="total_loans"></span></a></li>
+            <li><a href="/admin/clients">  <i class="fa fa-users"></i> Clients  <span class="total_clients"></span></a></li>
             <li><a href="/admin/wallets">   <i class="fa fa-copy "></i> Wallets</a></li>
             <li><a href="/admin/exchange"> <i class="fa fa-line-chart"></i> Exchange</a></li>
             <li><a href="/admin/loans">    <i class="fa fa-navicon"></i> Loans (Lending)</a></li>
