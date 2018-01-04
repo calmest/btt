@@ -105,8 +105,8 @@
         <ul class="nav menu">
             <li><a href="javascript:void(0);"><i class="fa fa-database"></i> <span class="asset-bal"></span></a></li>
             <li><a href="/admin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li><a href="/admin/notifications"> <i class="fa fa-bell"></i>   Notifications</a></li>
-            <li><a href="/admin/clients">  <i class="fa fa-users"></i> Clients</a></li>
+            <li><a href="/admin/notifications"> <i class="fa fa-bell"></i>   Notifications <span class="total_clients"></span></a></li>
+            <li><a href="/admin/clients">  <i class="fa fa-users"></i> Clients  <span class="total_loans"></span></a></li>
             <li><a href="/admin/wallets">   <i class="fa fa-copy "></i> Wallets</a></li>
             <li><a href="/admin/exchange"> <i class="fa fa-line-chart"></i> Exchange</a></li>
             <li><a href="/admin/loans">    <i class="fa fa-navicon"></i> Loans (Lending)</a></li>
@@ -162,6 +162,26 @@
                 $(".asset-bal").text(value.amount);
             });
         });
+
+        // Count no of signed up clients
+        $.get('/load/count/clients', function(client) {
+            /*optional stuff to do after success */
+            console.log(client);
+            $('.total_clients').html(`
+                (`+client.total_clients+`)
+            `);
+        });
+
+        // Count no loan request
+        $.get('/load/count/loans', function(loan) {
+            /*optional stuff to do after success */
+            console.log(loan);
+            $('.total_loans').html(`
+                (`+loan.total_loans+`)
+            `);
+        });
+
+
         // window.onload = function () {
         //     var chart1 = document.getElementById("line-chart").getContext("2d");
         //     window.myLine = new Chart(chart1).Line(lineChartData, {

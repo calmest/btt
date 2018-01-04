@@ -171,4 +171,34 @@ class AdminFactoryController extends Controller
 
         return response()->json($loans_box);
     }
+
+
+    // count no of users 
+    public function countClients()
+    {
+        $clients = Client::all();
+
+        // count clients
+        $total_clients = $clients->count();
+        $data = array(
+            'total_clients' => $total_clients
+        );
+
+        // return count response
+        return response()->json($data);
+    }
+
+    // count no of loan request
+    public function countLoans()
+    {
+        $loans = Loan::where('status', 'pending')->get();
+
+        $total_loans = $loans->count();
+        $data = array(
+            'total_loans' => $total_loans
+        );
+
+        // return total loan request
+        return response()->json($data);
+    }
 }
