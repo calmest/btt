@@ -93,6 +93,8 @@ Route::post('/admin/update/vault', 'AdminFactoryController@addBtt');
 Route::get('/admin/load/vault', 'AdminFactoryController@loadBtt');
 Route::get('/admin/load/clients', 'AdminFactoryController@clients');
 
+Route::get('/load/loan/request', 'AdminFactoryController@loadLoan');
+
 
 // Admin Authentications 
 Route::get('/admin/login',   'AdminLoginController@showLogin')->name('login-form');

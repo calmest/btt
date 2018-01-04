@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Vault;
 use App\Client;
 use App\Wallet;
+use App\Loan;
 
 class AdminFactoryController extends Controller
 {
@@ -128,5 +129,46 @@ class AdminFactoryController extends Controller
         }
 
         return response()->json($client_box);
+    }
+
+    // load loans request
+    public function loadLoan()
+    {
+        # fetch all loans
+        $loans = Loan::all();
+
+        $loans_box = [];
+
+        // Scanned all loans
+        foreach ($loans as $owings) {
+            # code...
+            $user_info = Client::where('id', $owings->user_id)->first();
+            $wallet_info = Wallet::where('client_id', $owings->user_id)->first();
+            if($wallet_info == null){
+                $wallets_addr = "no wallets address";
+                $wallets_balance = "users has no wallet";
+            }else{
+                $wallets_addr = $wallet_info->address;
+                $wallets_balance = $wallet_info->balance;
+            }
+            $data = array(
+                'id'       => $owings->id,
+                'name'     => $user_info->name,
+                'email'    => $user_info->email,
+                'addr'     => $wallets_addr,
+                'btt'      => $wallets_balance,
+                'usd'      => '0.00000000',
+                'amount'   => $owings->amount,
+                'rate'     => $owings->rate,
+                'interest' => $owings->interest,
+                'status'   => $owings->status,
+                'expired'  => date("M d 'Y" ,$owings->maturity_date),
+                'date'     => $owings->created_at->diffForHumans()
+            );
+        
+            array_push($loans_box, $data);    
+        }
+
+        return response()->json($loans_box);
     }
 }
