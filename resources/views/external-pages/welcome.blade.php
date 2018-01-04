@@ -1,11 +1,10 @@
 @extends('__layouts.skin')
 
 @section('title')
-    BTT | Login
+    BTT | Welcome 
 @endsection
 
 @section('contents')
-
     <br /><br />
     <section id="services">
       <div class="container">
