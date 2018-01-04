@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', function () {
-    return view('external-pages.login');
+    return view('external-pages.welcome');
 });
 
 // process login 

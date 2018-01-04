@@ -52,11 +52,7 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
-        $('#create-account').click(function (){
-            window.location.href = '/create/account';
-        });
-    </script>
+    
 @endsection
 
 
