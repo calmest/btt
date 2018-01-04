@@ -14,7 +14,6 @@
         <li class="active">Dashboard</li>
     </ol>
 </div><!--/.row-->
-
 <br />
     <div class="row">
         <div class="col-md-12">
@@ -36,7 +35,6 @@
         </div>
     </div>
 @endsection
-
 
 @section('scripts')
     <script type="text/javascript">
@@ -62,6 +60,4 @@
             })
         });
     </script>
-
-
 @endsection
