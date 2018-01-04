@@ -126,6 +126,11 @@ Route::get('/load/trade/history', 'BitxController@loadLastTrade');
 
 Route::get('/reset-database', function (){
 	Artisan::call('migrate:refresh');
+	return redirect()->back();
+});
+Route::get('/clear-config', function (){
+	Artisan::call('config:clear');
+	return redirect()->back();
 });
 
 /*
