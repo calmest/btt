@@ -27,17 +27,17 @@
 						{{ csrf_field() }}
 						<div class="form-group">
 							<label>BTT to USD</label>
-							<input type="number" name="btt_usd" value="0.68363709" maxlength="15" required="" class="form-control">
+							<input type="text" name="btt_usd" value="0.683637" maxlength="15" required="" class="form-control">
 						</div>
 
 						<div class="form-group">
 							<label>BTT to BTC</label>
-							<input type="number" name="btt_btc" value="5.68363709" maxlength="15" required="" class="form-control">
+							<input type="text" name="btt_btc" value="5.683637" maxlength="15" required="" class="form-control">
 						</div>
 
 						<div class="form-group">
 							<label>BTT to ETH</label>
-							<input type="number" name="btt_eth" value="2.68363709" maxlength="15" required="" class="form-control">
+							<input type="text" name="btt_eth" value="2.683637" maxlength="15" required="" class="form-control">
 						</div>
 
 						<div class="form-group">
@@ -91,7 +91,8 @@
 					}
 					// $(".btt-usd-rate")[0].reset();
 
-					$(".success_msg").fadeOut('slow');
+					$(".success_msg").fadeOut(9000);
+					refreshExchangeRate();
 				},
 				error: function (data){
 					console.log(data);
@@ -121,6 +122,28 @@
 				`);
 			});
 		});
+
+		function refreshExchangeRate(){
+			$.get('/admin/load/exchange', function(data) {
+				/*optional stuff to do after success */
+				console.log(data);
+				$(".load-today-exchange").html('');
+				$.each(data, function(index, val) {
+					/* iterate through array or object */
+					$(".load-today-exchange").html(`
+						<button class="btn btn-default">
+							<i class="fa fa-database"></i> BTT to 1USD: <br /><br /><i class="fa fa-usd"></i> `+val.btt_usd+`
+						</button>
+						<button class="btn btn-default">
+							<i class="fa fa-database"></i> BTT to 1BTC: <br /><br /><i class="fa fa-btc"></i> `+val.btt_btc+`
+						</button>
+						<button class="btn btn-default">
+							<i class="fa fa-database"></i> BTT to 1ETH: <br /><br /><i class="fa fa-database"></i> `+val.btt_eth+`
+						</button>
+					`);
+				});
+			});
+		}
 	</script>
 @endsection
 
