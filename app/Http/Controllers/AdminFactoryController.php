@@ -7,6 +7,7 @@ use App\Vault;
 use App\Client;
 use App\Wallet;
 use App\Loan;
+use App\Rate;
 
 class AdminFactoryController extends Controller
 {
@@ -89,6 +90,59 @@ class AdminFactoryController extends Controller
 
     	// return response
     	return response()->json($pair_box);
+    }
+
+    // load exchange rate
+    public function rate()
+    {
+        // exchange rate 
+        $all_rate = Rate::all();
+        $rate_box = [];
+        foreach ($all_rate as $rate) {
+            # code...
+            $data = array(
+                'btt_usd' => $rate->btt_usd,
+                'btt_btc' => $rate->btt_btc,
+                'btt_eth' => $rate->btt_eth
+            );
+
+            array_push($rate_box, $data);
+        }
+
+        return response()->json($rate_box);
+    }
+
+    // update rate
+    public function toggleRate(Request $request)
+    {
+        // request new rate
+        $btt_usd = $request->btt_usd;
+        $btt_btc = $request->btt_btc;
+        $btt_eth = $request->btt_eth;
+
+        $all_rate = Rate::first();
+        if($all_rate == null){
+            // insert new rate
+            $new_rate          = new Rate();
+            $new_rate->btt_usd = $btt_usd;
+            $new_rate->btt_btc = $btt_btc;
+            $new_rate->btt_eth = $btt_eth;
+            $new_rate->save();
+        }else{
+            // toggle rate
+            $update_rate          = Rate::find($all_rate->id);
+            $update_rate->btt_usd = $btt_usd;
+            $update_rate->btt_btc = $btt_btc;
+            $update_rate->btt_eth = $btt_eth;
+            $update_rate->update();
+        }
+
+        $data = array(
+            'status' => 'success',
+            'message' => 'Rate new exchange updates successful !'
+        );
+
+        return response()->json($data);
     }
 
     // load all users 

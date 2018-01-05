@@ -16,53 +16,36 @@
 		<div class="col-md-9">
 			<div class="lead text-center">
 				<p>Today's Exchange </p>
-				<button class="btn btn-default">
-					<i class="fa fa-database"></i> BTT to 1USD: <i class="fa fa-usd"></i> 
-				</button>
-				<button class="btn btn-default">
-					<i class="fa fa-database"></i> BTT to 1BTC: <i class="fa fa-btc"></i> 
-				</button>
-				<button class="btn btn-default">
-					<i class="fa fa-database"></i> BTT to 1ETH: <i class="fa fa-database"></i> 
-				</button>
+				<div class="load-today-exchange"></div>
 			</div>
 		</div>
 		<div class="col-md-3">
 			<div class="lead text-center">
 				<p>Today's Trading Rate </p>
 				<div class="small">
-					<form class="btt-usd-rate" method="post" onsubmit="return setRateUSD()">
+					<form class="btt-usd-rate" method="post" onsubmit="return setRate()">
+						{{ csrf_field() }}
 						<div class="form-group">
 							<label>BTT to USD</label>
-							<input type="number" name="rate" value="0.68363709" maxlength="15" required="" class="form-control">
+							<input type="number" name="btt_usd" value="0.68363709" maxlength="15" required="" class="form-control">
 						</div>
-						<div class="form-group">
-							<button class="btn btn-default">Set Today's Rate</button>
-						</div>
-					</form>
-				</div>
-				<hr />
-				<div class="small">
-					<form class="btt-usd-rate" method="post" onsubmit="return setRateBTC()">
+
 						<div class="form-group">
 							<label>BTT to BTC</label>
-							<input type="number" name="rate" value="5.68363709" maxlength="15" required="" class="form-control">
+							<input type="number" name="btt_btc" value="5.68363709" maxlength="15" required="" class="form-control">
 						</div>
-						<div class="form-group">
-							<button class="btn btn-default">Set Today's Rate</button>
-						</div>
-					</form>
-				</div>
-				<hr />
-				<div class="small">
-					<form class="btt-usd-rate" method="post" onsubmit="return setRateETH()">
+
 						<div class="form-group">
 							<label>BTT to ETH</label>
-							<input type="number" name="rate" value="2.68363709" maxlength="15" required="" class="form-control">
+							<input type="number" name="btt_eth" value="2.68363709" maxlength="15" required="" class="form-control">
 						</div>
+
 						<div class="form-group">
 							<button class="btn btn-default">Set Today's Rate</button>
 						</div>
+
+						<div class="success_msg"></div>
+						<div class="error_msg"></div>
 					</form>
 				</div>
 				<hr />
@@ -74,20 +57,72 @@
 
 @section('scripts')
 	<script type="text/javascript">
-		function setRateUSD() {
+		function setRate() {
 			// body...
+			var token   = $("input[name=_token]").val();
+			var bttUSD  = $("input[name=btt_usd]").val();
+			var bttBTC  = $("input[name=btt_btc]").val();
+			var bttETH  = $("input[name=btt_eth]").val();
+
+			// data to json
+			var data = {
+				_token:token,
+				btt_usd:bttUSD,
+				btt_btc:bttBTC,
+				btt_eth:bttETH
+			}
+
+			// send ajax
+			$.ajax({
+				url: '/admin/upload/rate',
+				type: 'post',
+				dataType: 'json',
+				data: data,
+				success: function (data){
+					console.log(data);
+					if(data.status == 'success'){
+						$(".success_msg").html(`
+							<p class="text-success">`+data.message+`</p>
+						`);
+					}else{
+						$(".error_msg").html(`
+							<p class="text-danger">`+data.message+`</p>
+						`);
+					}
+					// $(".btt-usd-rate")[0].reset();
+
+					$(".success_msg").fadeOut('slow');
+				},
+				error: function (data){
+					console.log(data);
+					alert('Error, Fail to send request');
+				}
+			});
+
 			return false;
 		}
 
-
-		function setRateBTC() {
-			// body...
-			return false;
-		}
-
-		function setRateETH() {
-			// body...
-			return false;
-		}
+		$.get('/admin/load/exchange', function(data) {
+			/*optional stuff to do after success */
+			console.log(data);
+			$(".load-today-exchange").html('');
+			$.each(data, function(index, val) {
+				/* iterate through array or object */
+				$(".load-today-exchange").html(`
+					<button class="btn btn-default">
+						<i class="fa fa-database"></i> BTT to 1USD: <br /><br /><i class="fa fa-usd"></i> `+val.btt_usd+`
+					</button>
+					<button class="btn btn-default">
+						<i class="fa fa-database"></i> BTT to 1BTC: <br /><br /><i class="fa fa-btc"></i> `+val.btt_btc+`
+					</button>
+					<button class="btn btn-default">
+						<i class="fa fa-database"></i> BTT to 1ETH: <br /><br /><i class="fa fa-database"></i> `+val.btt_eth+`
+					</button>
+				`);
+			});
+		});
 	</script>
 @endsection
+
+
+

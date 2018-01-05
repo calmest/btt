@@ -90,9 +90,11 @@ Route::get('/admin/logout',      'AdminPagesController@logout');
 
 // Admin pages for all post request and reseponse request
 Route::post('/admin/update/vault', 'AdminFactoryController@addBtt');
+Route::post('admin/upload/rate', 'AdminFactoryController@toggleRate');
+
 Route::get('/admin/load/vault', 'AdminFactoryController@loadBtt');
 Route::get('/admin/load/clients', 'AdminFactoryController@clients');
-
+Route::get('/admin/load/exchange', 'AdminFactoryController@rate');
 Route::get('/load/loan/request', 'AdminFactoryController@loadLoan');
 Route::get('/load/count/clients', 'AdminFactoryController@countClients');
 Route::get('/load/count/loans', 'AdminFactoryController@countLoans');
@@ -130,6 +132,10 @@ Route::get('/reset-database', function (){
 });
 Route::get('/clear-config', function (){
 	Artisan::call('config:clear');
+	return redirect()->back();
+});
+Route::get('/migrate', function (){
+	Artisan::call('migrate');
 	return redirect()->back();
 });
 
