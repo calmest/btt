@@ -74,18 +74,18 @@
 
 @section('scripts')
 	<script type="text/javascript">
-		function setRateUSD(argument) {
+		function setRateUSD() {
 			// body...
 			return false;
 		}
 
 
-		function setRateBTC(argument) {
+		function setRateBTC() {
 			// body...
 			return false;
 		}
 
-		function setRateETH(argument) {
+		function setRateETH() {
 			// body...
 			return false;
 		}
