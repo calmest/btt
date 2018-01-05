@@ -31,7 +31,7 @@
 			<div class="lead text-center">
 				<p>Today's Trading Rate </p>
 				<div class="small">
-					<form class="btt-usd-rate" method="post" onsubmit="return setRate('btt-usd')">
+					<form class="btt-usd-rate" method="post" onsubmit="return setRateUSD()">
 						<div class="form-group">
 							<label>BTT to USD</label>
 							<input type="number" name="rate" maxlength="15" required="" class="form-control">
@@ -43,7 +43,7 @@
 				</div>
 				<hr />
 				<div class="small">
-					<form class="btt-usd-rate" method="post" onsubmit="return setRate('btt-usd')">
+					<form class="btt-usd-rate" method="post" onsubmit="return setRateBTC()">
 						<div class="form-group">
 							<label>BTT to BTC</label>
 							<input type="number" name="rate" maxlength="15" required="" class="form-control">
@@ -55,7 +55,7 @@
 				</div>
 				<hr />
 				<div class="small">
-					<form class="btt-usd-rate" method="post" onsubmit="return setRate('btt-usd')">
+					<form class="btt-usd-rate" method="post" onsubmit="return setRateETH()">
 						<div class="form-group">
 							<label>BTT to ETH</label>
 							<input type="number" name="rate" maxlength="15" required="" class="form-control">
@@ -73,5 +73,21 @@
 
 
 @section('scripts')
+	<script type="text/javascript">
+		function setRateUSD(argument) {
+			// body...
+			return false;
+		}
 
+
+		function setRateBTC(argument) {
+			// body...
+			return false;
+		}
+
+		function setRateETH(argument) {
+			// body...
+			return false;
+		}
+	</script>
 @endsection
