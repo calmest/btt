@@ -34,7 +34,7 @@
 					<form class="btt-usd-rate" method="post" onsubmit="return setRateUSD()">
 						<div class="form-group">
 							<label>BTT to USD</label>
-							<input type="number" name="rate" maxlength="15" required="" class="form-control">
+							<input type="number" name="rate" value="0.68363709" maxlength="15" required="" class="form-control">
 						</div>
 						<div class="form-group">
 							<button class="btn btn-default">Set Today's Rate</button>
@@ -46,7 +46,7 @@
 					<form class="btt-usd-rate" method="post" onsubmit="return setRateBTC()">
 						<div class="form-group">
 							<label>BTT to BTC</label>
-							<input type="number" name="rate" maxlength="15" required="" class="form-control">
+							<input type="number" name="rate" value="5.68363709" maxlength="15" required="" class="form-control">
 						</div>
 						<div class="form-group">
 							<button class="btn btn-default">Set Today's Rate</button>
@@ -58,7 +58,7 @@
 					<form class="btt-usd-rate" method="post" onsubmit="return setRateETH()">
 						<div class="form-group">
 							<label>BTT to ETH</label>
-							<input type="number" name="rate" maxlength="15" required="" class="form-control">
+							<input type="number" name="rate" value="2.68363709" maxlength="15" required="" class="form-control">
 						</div>
 						<div class="form-group">
 							<button class="btn btn-default">Set Today's Rate</button>
