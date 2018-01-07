@@ -18,6 +18,23 @@
 				<p>Today's Exchange </p>
 				<div class="load-today-exchange"></div>
 			</div>
+			<hr />
+			<div class="col-sm-12">
+				<h1 class="lead text-center">Graph Curve</h1>
+			</div>
+
+			<div class="col-sm-12">
+				<h1 class="lead text-center">Trading Activities monitor's Here</h1>
+				 
+				<table class="table text-center">
+					<tbody>
+						<tr>
+							<td><button class="btn btn-default">Bid</button></td>
+							<td><button class="btn btn-default">Offer/Ask</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="col-md-3">
 			<div class="lead text-center">
