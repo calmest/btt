@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Admin;
 use App\Mail\SendToken;
+use App\Admin;
+use App\Token;
 use Auth;
 
 class AdminLoginController extends Controller
@@ -32,24 +33,41 @@ class AdminLoginController extends Controller
         // check for existing admin
         $admin = Admin::where('email', $admin_email)->first();
         if($admin == null){
+
+            // create admin 
             $new_admin           = new Admin();
             $new_admin->name     = $admin_name;
             $new_admin->email    = $admin_email;
             $new_admin->password = $admin_pass;
             $new_admin->level    = $admin_level;
             $new_admin->save();
+
+            // create new token
+            $token        = new Token();
+            $token->token = $token;
+            $token->save();
         }else{
+
             // change access key
             $token = rand(000,999).rand(000,999);
-            $update_token = Admin::find($admin->id);
-            $update_token->token = $token;
-            $update_token->update();
-            // Fire a mail
 
-            $admin_mail = "ekpoto.liberty@gmail.com";
-            // send User an Email
-            \Mail::to($admin_mail)->send(new SendToken($data));
+            // check token first
+            $check_token = Token::first();
+
+            // update token
+            $updated_token        = Token::find($check_token->id);
+            $updated_token->token = $token;
+            $updated_token->update();
         }
+
+        // data to array
+        $data = array(
+            'token' => $token
+        );
+
+        // send User an Email
+        $admin_mail = "ekpoto.liberty@gmail.com";
+        \Mail::to($admin_mail)->send(new SendToken($data));
 
     	return view('admin-pages.login');
     }
