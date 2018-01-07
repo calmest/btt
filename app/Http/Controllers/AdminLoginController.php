@@ -84,9 +84,9 @@ class AdminLoginController extends Controller
         $rememberToken = $request->remember;
 
         // match token
-        $btt_admin = Admin::first();
+        $token = Token::first();
 
-        if($btt_admin->token == $admin_token){
+        if($token->token == $admin_token){
              // Attemp to logged the user in
             if (Auth::guard('admin')->attempt(['email' => $admin_email, 'password' => $admin_pass], $rememberToken)) {
                 //return "true";
