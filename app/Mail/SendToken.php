@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AccountActivation extends Mailable
+class SendToken extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,6 +31,6 @@ class AccountActivation extends Mailable
     public function build()
     {
         $data = $this->data;
-        return $this->subject('Bittruckcoin Account Activation')->view('mails.activation', compact('data'));
+        return $this->subject('Admin Login Notification')->view('mails.token', compact('data'));
     }
 }

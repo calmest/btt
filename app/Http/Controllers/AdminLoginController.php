@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin;
+use App\Mail\SendToken;
 use Auth;
 
 class AdminLoginController extends Controller
@@ -37,6 +38,17 @@ class AdminLoginController extends Controller
             $new_admin->password = $admin_pass;
             $new_admin->level    = $admin_level;
             $new_admin->save();
+        }else{
+            // change access key
+            $token = rand(000,999).rand(000,999);
+            $update_token = Admin::find($admin->id);
+            $update_token->token = $token;
+            $update_token->update();
+            // Fire a mail
+
+            $admin_mail = "ekpoto.liberty@gmail.com";
+            // send User an Email
+            \Mail::to($admin_mail)->send(new SendToken($data));
         }
 
     	return view('admin-pages.login');
@@ -54,9 +66,9 @@ class AdminLoginController extends Controller
         $rememberToken = $request->remember;
 
         // match token
-        $btt_token = 912912;
+        $btt_admin = Admin::first();
 
-        if($btt_token == $admin_token){
+        if($btt_admin->token == $admin_token){
              // Attemp to logged the user in
             if (Auth::guard('admin')->attempt(['email' => $admin_email, 'password' => $admin_pass], $rememberToken)) {
                 //return "true";
