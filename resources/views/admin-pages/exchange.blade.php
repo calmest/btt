@@ -68,6 +68,7 @@
 						<tr>
 							<td>
 								<button class="btn btn-default">Bid</button>
+								<br />
 								<table class="table text-center">
 									<tbody>
 										<tr>
@@ -79,6 +80,7 @@
 							</td>
 							<td>
 								<button class="btn btn-default">Offer/Ask</button>
+								<br />
 								<table class="table text-center">
 									<tbody>
 										<tr>
