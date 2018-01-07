@@ -66,8 +66,28 @@
 				<table class="table text-center">
 					<tbody>
 						<tr>
-							<td><button class="btn btn-default">Bid</button></td>
-							<td><button class="btn btn-default">Offer/Ask</button></td>
+							<td>
+								<button class="btn btn-default">Bid</button>
+								<table class="table text-center">
+									<tbody>
+										<tr>
+											<td>Amount</td>
+											<td>Price</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td>
+								<button class="btn btn-default">Offer/Ask</button>
+								<table class="table text-center">
+									<tbody>
+										<tr>
+											<td>Amount</td>
+											<td>Price</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
 						</tr>
 					</tbody>
 				</table>
