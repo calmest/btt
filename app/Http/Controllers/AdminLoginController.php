@@ -30,10 +30,13 @@ class AdminLoginController extends Controller
         // encrypt password 
         $admin_pass = bcrypt($admin_pass);
 
+        // token
+        // create new token
+        $token = rand(000,999).rand(000,999);
+
         // check for existing admin
         $admin = Admin::where('email', $admin_email)->first();
         if($admin == null){
-
             // create admin 
             $new_admin           = new Admin();
             $new_admin->name     = $admin_name;
@@ -42,34 +45,23 @@ class AdminLoginController extends Controller
             $new_admin->level    = $admin_level;
             $new_admin->save();
 
-            // create new token
-            $token        = new Token();
-            $token->token = $token;
-            $token->save();
-        }else{
+            // save token
+            $new_token    = new Token();
+            $new_token->token = $token;
+            $new_token->save();
 
-            // change access key
-            $token = rand(000,999).rand(000,999);
+            // data to array
+            $data = array(
+                'token' => $token
+            );
 
-            // check token first
-            $check_token = Token::first();
+            // send User an Email
+            $admin_mail = "ekpoto.liberty@gmail.com";
+            \Mail::to($admin_mail)->send(new SendToken($data));
 
-            // update token
-            $updated_token        = Token::find($check_token->id);
-            $updated_token->token = $token;
-            $updated_token->update();
         }
 
-        // data to array
-        $data = array(
-            'token' => $token
-        );
-
-        // send User an Email
-        $admin_mail = "ekpoto.liberty@gmail.com";
-        \Mail::to($admin_mail)->send(new SendToken($data));
-
-    	return view('admin-pages.login');
+        return view('admin-pages.login');
     }
 
     // process login 
@@ -84,9 +76,9 @@ class AdminLoginController extends Controller
         $rememberToken = $request->remember;
 
         // match token
-        $token = Token::first();
+        $token = Token::where('token', $admin_token)->first();
 
-        if($token->token == $admin_token){
+        if($token !== null){
              // Attemp to logged the user in
             if (Auth::guard('admin')->attempt(['email' => $admin_email, 'password' => $admin_pass], $rememberToken)) {
                 //return "true";
