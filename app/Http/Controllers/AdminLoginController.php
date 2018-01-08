@@ -76,9 +76,9 @@ class AdminLoginController extends Controller
         $rememberToken = $request->remember;
 
         // match token
-        $token = Token::where('token', $admin_token)->first();
+        // $token = Token::where('token', $admin_token)->first();
 
-        if($token !== null){
+        // if($token !== null){
              // Attemp to logged the user in
             if (Auth::guard('admin')->attempt(['email' => $admin_email, 'password' => $admin_pass], $rememberToken)) {
                 //return "true";
@@ -90,11 +90,11 @@ class AdminLoginController extends Controller
                     ->withInput($request->only('email', 'remember'))
                     ->with('error-status', 'Fail to login admin, please check your login credentials, CaSE-seNsiTive  ');
             }
-        }else{
-            return redirect()
-                    ->back()
-                    ->withInput($request->only('email', 'remember'))
-                    ->with('error-status', 'Fail to login admin, please provide your access token');
-        }      
+        // }else{
+        //     return redirect()
+        //             ->back()
+        //             ->withInput($request->only('email', 'remember'))
+        //             ->with('error-status', 'Fail to login admin, please provide your access token');
+        // }      
     }
 }

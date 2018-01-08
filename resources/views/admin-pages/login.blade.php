@@ -21,13 +21,13 @@
 								<input class="form-control" placeholder="password" name="password" type="password" value="">
 							</div>
 							<hr />
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<input class="form-control" style="width: 100px;" required="" 
 								placeholder="token" name="btt_token" type="password"> 
 								<a href="#">resend token</a>
 								<hr />
 								<p><b>Note:</b> <span class="text-warning">check access code via sms/email</span></p>
-							</div>
+							</div> -->
 							<button class="btn btn-primary">Secured Login</button>
 						</fieldset>
 						<br />
