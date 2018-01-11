@@ -9,6 +9,7 @@ use App\Vault;
 use App\Payment;
 use App\Transaction;
 use App\Loan;
+use App\Trade;
 use Auth;
 
 class ClientHomeController extends Controller
@@ -54,6 +55,44 @@ class ClientHomeController extends Controller
                 'id'   => $wallets->id,
                 'addr' => $wallets->address,
                 'bal'  => $wallets->balance
+            );
+        }
+
+        return response()->json($data);
+    }
+
+    // job trade 
+    public function jobTrade(Request $request)
+    {
+        $user_id = Auth::user()->id;
+        $price   = $request->price;
+        $qty     = $request->qty;
+
+        // check wallets
+        $wallets = Wallet::where('user_id', $user_id)->first();
+
+        // wallets
+        if($wallets->balance < $qty ){
+
+            // data to array
+            $data = array(
+                'status' => 'error',
+                'message' => 'you do not have sufficient balance '
+            );
+            
+        }else{
+
+            // Job trade
+            $trade          = new Trade();
+            $trade->user_id = $user_id;
+            $trade->price   = $price;
+            $trade->amount  = $amount;
+            $trade->save();
+
+            // data to array
+            $data = array(
+                'status' => 'success',
+                'message' => 'Trade order placed successfully !'
             );
         }
 
@@ -208,18 +247,51 @@ class ClientHomeController extends Controller
     {
         // amount
         $amount = $request->amount;
-
-
         // check if user have loan already
-
-
     }
 
     // request sell 
-    public function sellBtt()
+    public function sellBtt(Request $request)
     {
+        // current logged user
+        $client_id = Auth::user()->id;
+
         // amount
         $amount = $request->amount;
+
+        // constant 
+        $limit = 0.00044550;
+
+        // check limit
+        if($limit > $amount){
+            $data = array(
+                'status' => 'error',
+                'message' => 'BTT must be above <b>0.00044550</b> before sell !!!' 
+            );
+        }else{
+            // check user wallet balance
+            $wallets = Wallet::where('client_id', $client_id)->first();
+            if($wallets->balace < $amount){
+                $data = array(
+                    'status' => 'error',
+                    'message' => 'Insufficient balance !!!' 
+                );
+            }else{
+                $vault_id = Vault::where('type', 'btt')->first();
+
+                $vaults = Vault::find($vault_id->id);
+                $vaults->balance = bcadd($vaults->balance, $amount, 8);
+                $vaults->update();
+
+                $data = array(
+                    'status' => 'success',
+                    'message' => 'Sold BTT successfully !' 
+                );
+            }
+        }
+
+        // return response 
+        return response()->json($data);
     }
 
     // request send
@@ -229,7 +301,6 @@ class ClientHomeController extends Controller
         $amount    = $request->amount;
         $receiver  = $request->address;
         $from      = $request->from;
-
     }
 
     // request loan

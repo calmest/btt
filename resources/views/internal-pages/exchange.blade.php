@@ -11,6 +11,8 @@
                 <em class="fa fa-home"></em>
             </a></li>
             <li class="active">Exchange</li>
+            <li class=""><span class="small">USD: <i class="fa fa-usd"></i> <span class="usd_bal">0.00</span></span></li>
+            
         </ol>
     </div><!--/.row-->
     <!-- Main-Content -->
@@ -68,17 +70,39 @@
                 </div>
 
                 <div class="col-sm-12">
-                    <h1 class="lead text-center">Trading Activities monitor's Here</h1>
-                     
-                    <table class="table text-center">
-                        <tbody>
-                            <tr>
-                                <td><button class="btn btn-default">Bid</button></td>
-                                <td><button class="btn btn-default">Offer/Ask</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h1 class="lead text-center">Trading Activities monitor's Here</h1>
+                 
+                <table class="table text-center">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button class="btn btn-default">Bid</button>
+                                <br />
+                                <table class="table text-center">
+                                    <tbody>
+                                        <tr>
+                                            <td>Amount</td>
+                                            <td>Price</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>
+                                <button class="btn btn-default">Offer/Ask</button>
+                                <br />
+                                <table class="table text-center">
+                                    <tbody>
+                                        <tr>
+                                            <td>Amount</td>
+                                            <td>Price</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             </div>
         </div>
     </div>

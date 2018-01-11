@@ -96,8 +96,11 @@ Route::get('/admin/load/vault', 'AdminFactoryController@loadBtt');
 Route::get('/admin/load/clients', 'AdminFactoryController@clients');
 Route::get('/admin/load/exchange', 'AdminFactoryController@rate');
 Route::get('/load/loan/request', 'AdminFactoryController@loadLoan');
+Route::get('/load/loan/accepted', 'AdminFactoryController@loadAcceptedLoan');
 Route::get('/load/count/clients', 'AdminFactoryController@countClients');
 Route::get('/load/count/loans', 'AdminFactoryController@countLoans');
+
+Route::get('/accept/loan/', 'AdminFactoryController@acceptLoan');
 
 
 // Admin Authentications 

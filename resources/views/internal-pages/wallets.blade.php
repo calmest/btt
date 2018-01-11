@@ -12,6 +12,8 @@
                 <em class="fa fa-home"></em>
             </a></li>
             <li class="active">wallet</li>
+            <li class=""><span class="small">USD: <i class="fa fa-usd"></i> <span class="usd_bal">0.00</span></span></li>
+            
         </ol>
     </div><!--/.row-->
     <!-- Main-Content -->

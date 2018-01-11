@@ -47,6 +47,7 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Rate' => $baseDir . '/app/Rate.php',
     'App\\Token' => $baseDir . '/app/Token.php',
+    'App\\Trade' => $baseDir . '/app/Trade.php',
     'App\\Transaction' => $baseDir . '/app/Transaction.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Vault' => $baseDir . '/app/Vault.php',

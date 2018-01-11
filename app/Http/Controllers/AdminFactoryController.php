@@ -189,7 +189,7 @@ class AdminFactoryController extends Controller
     public function loadLoan()
     {
         # fetch all loans
-        $loans = Loan::all();
+        $loans = Loan::where('status', 'pending')->get();
 
         $loans_box = [];
 
@@ -224,6 +224,84 @@ class AdminFactoryController extends Controller
         }
 
         return response()->json($loans_box);
+    }
+
+
+    // load accepted loans
+    public function loadAcceptedLoan()
+    {
+        # fetch all loans
+        $loans = Loan::where('status', 'accepted')->get();
+
+        $loans_box = [];
+
+        // Scanned all loans
+        foreach ($loans as $owings) {
+            # code...
+            $user_info = Client::where('id', $owings->user_id)->first();
+            $wallet_info = Wallet::where('client_id', $owings->user_id)->first();
+            if($wallet_info == null){
+                $wallets_addr = "no wallets address";
+                $wallets_balance = "users has no wallet";
+            }else{
+                $wallets_addr = $wallet_info->address;
+                $wallets_balance = $wallet_info->balance;
+            }
+            $data = array(
+                'id'       => $owings->id,
+                'name'     => $user_info->name,
+                'email'    => $user_info->email,
+                'addr'     => $wallets_addr,
+                'btt'      => $wallets_balance,
+                'usd'      => '0.00000000',
+                'amount'   => $owings->amount,
+                'rate'     => $owings->rate,
+                'interest' => $owings->interest,
+                'status'   => $owings->status,
+                'expired'  => date("M d 'Y" ,$owings->maturity_date),
+                'date'     => $owings->created_at->diffForHumans()
+            );
+        
+            array_push($loans_box, $data);    
+        }
+
+        return response()->json($loans_box);
+
+    }
+
+    // accept loans
+    public function acceptLoan(Request $request)
+    {
+        # code..
+        $id = $request->id;
+
+        // dd($id);
+        $check_loan = Loan::where('id', $id)->first();
+
+        // return $check_loan;
+
+        // check amount and credit user
+        $wallet = Wallet::where('client_id', $check_loan->user_id)->first();
+
+        // update client account (credit client account)
+        $update_wallet = Wallet::find($wallet->id);
+        $update_wallet->balance = bcadd($check_loan->amount, $update_wallet->balance, 8);
+        $update_wallet->update();
+
+        // debit admin account
+        $admin_bank = Vault::where('type', 'btt')->first();
+
+        // update bank 
+        $update_vault = Vault::find($admin_bank->id);
+        $update_vault->amount = $update_vault->amount - $check_loan->amount;
+        $update_vault->update();
+
+        // updated loan status 
+        $update_loan = Loan::find($id);
+        $update_loan->status = 'accepted';
+        $update_loan->update();
+        
+        return redirect()->back()->with('loan_status', 'Loan request has been granted !');
     }
 
 

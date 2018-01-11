@@ -10,7 +10,13 @@
 		<div class="col-md-12">
 			<h1>Notifications</h1>
 		</div>
+
 		<div class="col-md-12">
+			@if(session('loan_status'))
+				<div class="alert alert-success">
+					<p class="text-success">{{ session('loan_status') }}</p>
+				</div>
+			@endif
 			<h1 class="lead">Incoming Loans Request</h1>
 			<table class="table small">
 				<thead>
@@ -46,7 +52,7 @@
 						<th>Option</th>
 					</tr>
 				</thead>
-				<tbody class="load-accepted-request"></tbody>
+				<tbody class="load-loan-accepted"></tbody>
 			</table>
 		</div>
 	</div>
@@ -62,7 +68,7 @@
 			$.each(data, function(index, val) {
 				/* iterate through array or object */
 				sn++;
-				$(".load-loan-request").html(`
+				$(".load-loan-request").append(`
 					<tr>
 						<td>`+sn+`</td>
 						<td>`+val.email+`</td>
@@ -76,6 +82,32 @@
 						<td>
 							<a class="btn-link small" href="/accept/loan/?id=`+val.id+`">Accept</a> -
 							<a class="btn-link small" href="/reject/loan/?id=`+val.id+`">Reject</a>
+						</td>
+					</tr>
+				`);
+			});
+		});
+
+
+		$.get('/load/loan/accepted', function(data) {
+			/*optional stuff to do after success */
+			console.log(data);
+			var sn = 0;
+			$(".load-loan-accepted").html();
+			$.each(data, function(index, val) {
+				/* iterate through array or object */
+				sn++;
+				$(".load-loan-accepted").append(`
+					<tr>
+						<td>`+sn+`</td>
+						<td>`+val.addr+`</td>
+						<td>`+val.amount+`</td>
+						<td>`+val.rate+`</td>
+						<td>`+val.interest+`</td>
+						<td>`+val.expired+`</td>
+						<td>`+val.date+`</td>
+						<td>
+							<a href="">Block</a>
 						</td>
 					</tr>
 				`);

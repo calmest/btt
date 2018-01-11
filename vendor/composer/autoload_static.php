@@ -378,6 +378,7 @@ class ComposerStaticInit1b9510c2ed44cc1c44b181613567f3dc
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Rate' => __DIR__ . '/../..' . '/app/Rate.php',
         'App\\Token' => __DIR__ . '/../..' . '/app/Token.php',
+        'App\\Trade' => __DIR__ . '/../..' . '/app/Trade.php',
         'App\\Transaction' => __DIR__ . '/../..' . '/app/Transaction.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\Vault' => __DIR__ . '/../..' . '/app/Vault.php',
