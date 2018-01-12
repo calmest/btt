@@ -196,7 +196,6 @@ class ClientHomeController extends Controller
 
         # payment history
         $transactions = Transaction::where('user_id', $user_id)->get();
-
         $trans_box = [];
         foreach ($transactions as $transaction) {
             # code...

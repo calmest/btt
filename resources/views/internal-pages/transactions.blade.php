@@ -19,8 +19,39 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Transaction History</h1>
+                <h1 class="lead">Transaction History</h1>
             </div>
+            <div class="col-md-6">
+                <hr>
+                <table class="table"> 
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>type</th>
+                            <th>amount</th>
+                            <th>rate</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="transaction-card"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr>
+            <h1 class="lead">Payments Logs</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>from</th>
+                        <th>wallet id</th>
+                        <th>amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody class="payments-card"></tbody>
+            </table>
         </div>
     </div>
     <!--// Main-Content-->
@@ -28,8 +59,49 @@
 
 @section('scripts')
     <script type="text/javascript">
-        $('#create-account').click(function (){
-            window.location.href = '/create/account';
+        // load transactions
+        $.get('/account/transaction/history', function(data) {
+            /*optional stuff to do after success */
+            // console.log(data);
+            $('.transaction-card').html('');
+            var sn = 0;
+            $.each(data, function(index, val) {
+                /* iterate through array or object */
+                // console.log(val);
+                sn++;
+                $('.transaction-card').append(`
+                    <tr>
+                        <td>`+sn+`</td>
+                        <td>`+val.type+`</td>
+                        <td>`+val.amount+`</td>
+                        <td>`+val.rate+`</td>
+                        <td>`+val.created_at+`</td>
+                    </tr>
+                `);
+            });
+        });
+
+
+        // load payments history
+        $.get('/account/payment/history', function(data) {
+            /*optional stuff to do after success */
+            $('.payments-card').html('');
+            var sn = 0;
+            $.each(data, function(index, val) {
+                /* iterate through array or object */
+                console.log(val);
+                sn++;
+                $('.payments-card').append(`
+                    <tr>
+                        <td>`+sn+`</td>
+                        <td>`+val.from+`</td>
+                        <td>`+val.to+`</td>
+                        <td>`+val.amount+`</td>
+                        <td>`+val.created_at+`</td>
+                    </tr>
+                `);
+            });
+
         });
     </script>
 @endsection

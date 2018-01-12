@@ -8,6 +8,8 @@ use App\Client;
 use App\Wallet;
 use App\Loan;
 use App\Rate;
+use App\Transaction;
+use App\Payment;
 
 class AdminFactoryController extends Controller
 {
@@ -295,6 +297,30 @@ class AdminFactoryController extends Controller
         $update_vault = Vault::find($admin_bank->id);
         $update_vault->amount = $update_vault->amount - $check_loan->amount;
         $update_vault->update();
+
+        // btt logic
+        $rate = 0.50000000;
+        $type = 'recieved';
+
+        // create transaction logs
+        $transactions = new Transaction();
+        $transactions->user_id = $check_loan->user_id;
+        $transactions->type    = $type;
+        $transactions->rate    = $rate;
+        $transactions->amount  = $check_loan->amount;
+        $transactions->save();
+
+        // default 
+        $from = "Bittruckcoin";
+        $to   = $wallet->address;
+
+        // create payments 
+        $payments          = new Payment();
+        $payments->user_id = $check_loan->user_id;
+        $payments->to      = $to;
+        $payments->from    = $from;
+        $payments->amount  = $check_loan->amount;
+        $payments->save();
 
         // updated loan status 
         $update_loan = Loan::find($id);
