@@ -7,7 +7,8 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/datepicker3.css" rel="stylesheet">
-    <link href="/css/client-style.css" rel="stylesheet">
+    {{-- <link href="/css/client-style.css" rel="stylesheet"> --}}
+    <link href="/css/style.css" rel="stylesheet">
     <link rel="icon" href="/images/ico-set.png">
     <script src="/js/jquery.js"></script>x`
     <!--Custom Font-->
@@ -30,29 +31,10 @@
     }
 </style>
 <body>
-    <!-- Navigation -->
-    <nav id="menu" class="navbar navbar-default navbar-fixed-top" style="background-color: rgba(000,000,030,0.80);">
-      <div class="container"> 
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-              <a class="navbar-brand" href="/"> 
-                <img src="/images/ico-set.png" class="ico-set">
-            </a> 
-        </div>
-        
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-        </div>
-        <!-- /.navbar-collapse --> 
-      </div>
-      <!-- /.container-fluid --> 
-    </nav>
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" style="position: absolute; margin-top: 0px;">
         <div class="profile-sidebar">
             <div class="profile-userpic">
-                <img src="/images/logo.png" class="img-circle" width="50%" height="50%" alt="">
+                <img src="/images/logo.png" class="img-circle" width="50px" height="50px" alt=""><br />
                 {{ Auth::user()->name }}
             </div>
         </div>

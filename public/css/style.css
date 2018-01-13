@@ -135,11 +135,18 @@ table {
 	border-spacing: 0;
 }
 
+label {
+	font-size: 13px;
+	color: #fff;
+}
+
+
 
 /*--start editing from here--*/
 
 a {
 	text-decoration: none;
+
 }
 
 .txt-rt {
