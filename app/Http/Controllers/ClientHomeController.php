@@ -294,63 +294,91 @@ class ClientHomeController extends Controller
     }
 
     // request send
-    public function sendBtt()
+    public function sendBtt(Request $request)
     {
         // amount
         $amount    = $request->amount;
         $receiver  = $request->walletId;
 
-        // since client is recieving
-        $type = "send";
-        $rate = "0.5";
+        // validate ammount 
+        if(is_numeric($amount)){
+            // since client is recieving
+            $type = "send";
+            $rate = "0.5";
 
-        // get sender 
-        $client_id = Auth::user()->id;
-        $from   = Wallet::where('client_id', $client_id)->first();
-        // from address
-        $from = $from->address;
+            // get sender 
+            $client_id = Auth::user()->id;
+            $client_wallet = Wallet::where('client_id', $client_id)->first();
 
-        // check if users has enough to send
-        if($from->address > $amount){
-            // deduct balance from account
-            $update_wallet = Wallet::find($from->id);
-            $update_wallet->balance = $update_wallet->balance - $amount;
-            $update_wallet->update();
+            // from address
+            $from = $client_wallet->address;
 
-            // create transaction logs
-            $transactions = new Transaction();
-            $transactions->user_id = $client_id;
-            $transactions->type    = $type;
-            $transactions->rate    = $rate;
-            $transactions->amount  = $amount;
-            $transactions->save();
+            // check address validity
+            $check_address = Wallet::where('address', $receiver)->first();
+            if($check_address !== null){
+                // check if users has enough to send
+                if($client_wallet->balance > $amount){
+                    // deduct balance from account
+                    $update_wallet = Wallet::find($client_wallet->id);
+                    $update_wallet->balance = $update_wallet->balance - $amount;
+                    $update_wallet->update();
 
-            // create payments 
-            $payments          = new Payment();
-            $payments->user_id = $client_id;
-            $payments->to      = $receiver;
-            $payments->from    = $from;
-            $payments->amount  = $amount;
-            $payments->save();
+                    // update receivers account
+                    $update_rec_wallet = Wallet::find($check_address->id);
+                    $update_rec_wallet->balance = $update_rec_wallet->balance + $amount;
+                    $update_rec_wallet->update();
 
-            // response msg 
-            $msg = 'Transfer <i class="fa fa-database"></> <b>'.$amount.'</b> successful !';
+                    // create transaction logs
+                    $transactions = new Transaction();
+                    $transactions->user_id = $client_id;
+                    $transactions->type    = $type;
+                    $transactions->rate    = $rate;
+                    $transactions->amount  = $amount;
+                    $transactions->save();
 
-            // response data
-            $data = array(
-                'status'  => 'error',
-                'message' => $msg
-            );
+                    // create payments 
+                    $payments          = new Payment();
+                    $payments->user_id = $client_id;
+                    $payments->to      = $receiver;
+                    $payments->from    = $from;
+                    $payments->amount  = $amount;
+                    $payments->save();
+
+                    // response msg 
+                    $msg = 'Transfer <i class="fa fa-database"></i> <b>'.$amount.'</b> successful !';
+
+                    // response data
+                    $data = array(
+                        'status'  => 'success',
+                        'message' => $msg
+                    );
+                }else{
+                    // response data
+                    $data = array(
+                        'status'  => 'error',
+                        'message' => 'Insufficent balance, Transaction not successful !'
+                    );
+                }
+            }else{
+                // response msg 
+                $msg = 'Invalid Wallet address, Transfer Fail !';
+
+                // response data
+                $data = array(
+                    'status'  => 'error',
+                    'message' => $msg
+                );
+            }
+
+            // return response complete
+            return response()->json($data);
         }else{
             // response data
             $data = array(
                 'status'  => 'error',
-                'message' => 'Insufficent balance, Transaction not successful !'
+                'message' => 'Invalid amount !, Transaction not successful !'
             );
         }
-
-        // return response complete
-        return response()->json($data);
     }
 
     // request loan

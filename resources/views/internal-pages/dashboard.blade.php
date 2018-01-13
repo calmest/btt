@@ -123,7 +123,7 @@
                     </div>
                     <div class="form-group">
                         <label for="amount">Amount</label> 
-                        <input type="number" id="send_amount" class="form-control" placeholder="00.00" maxlength="15" required="">
+                        <input type="text" id="send_amount" class="form-control" placeholder="00.00" maxlength="15" required="">
                     </div>
                     
                     <hr />
