@@ -50,6 +50,7 @@ Route::get('/account/setting',      'ClientHomeController@setting')->name('setti
 // Route::get('/account/chart/{pair}', 'ClientHomeController@charts')->name('charts');
 Route::get('/account/payment/history', 'ClientHomeController@loadPayments')->name('load-payments');
 Route::get('/account/transaction/history', 'ClientHomeController@loadTransactions')->name('load-transactions');
+Route::get('/account/transaction/received', 'ClientHomeController@loadTransactionsReceived')->name('load-transactions-received');
 
 
 // Process BTT chain

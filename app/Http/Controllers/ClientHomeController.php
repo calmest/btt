@@ -215,6 +215,36 @@ class ClientHomeController extends Controller
         return response()->json($trans_box);
     }
 
+    // load transactions logs on received
+    public function loadTransactionsReceived()
+    {
+        # load clients transactions
+        $user_id = Auth::user()->id;
+
+        # wallets address
+        $wallet = Wallet::where('client_id', $user_id)->first();
+
+        # payment history
+        $transactions = Payment::where('to', $wallet->address)->get();
+        $trans_box = [];
+        foreach ($transactions as $transaction) {
+            # code...
+            $data = array(
+                'id'         => $transaction->id,
+                'user_id'    => $transaction->user_id,
+                'type'       => $transaction->type,
+                'rate'       => $transaction->rate,
+                'amount'     => $transaction->amount,
+                'created_at' => $transaction->created_at->diffForHumans() 
+            );
+
+            # push data
+            array_push($trans_box, $data);
+        }
+
+        return response()->json($trans_box);
+    }
+
     // load loans history
     public function loadLoans()
     {

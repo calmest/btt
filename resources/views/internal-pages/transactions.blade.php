@@ -22,6 +22,7 @@
                 <h1 class="lead">Transaction History</h1>
             </div>
             <div class="col-md-6">
+                <h1 class="lead">Transaction logs</h1>
                 <hr>
                 <table class="table"> 
                     <thead>
@@ -36,9 +37,25 @@
                     <tbody class="transaction-card"></tbody>
                 </table>
             </div>
+            <div class="col-md-6">
+                <h1 class="lead">Received Payments logs</h1>
+                <hr>
+                <table class="table"> 
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>type</th>
+                            <th>amount</th>
+                            <th>rate</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="transaction-received"></tbody>
+                </table>
+            </div>
         </div>
+        <br /><br />
         <div class="col-md-12">
-            <hr>
             <h1 class="lead">Payments Logs</h1>
             <table class="table">
                 <thead>
@@ -59,6 +76,7 @@
 
 @section('scripts')
     <script type="text/javascript">
+        var logged_id = '{{ Auth::user()->id }}';
         // load transactions
         $.get('/account/transaction/history', function(data) {
             /*optional stuff to do after success */
@@ -69,15 +87,42 @@
                 /* iterate through array or object */
                 // console.log(val);
                 sn++;
-                $('.transaction-card').append(`
-                    <tr>
-                        <td>`+sn+`</td>
-                        <td>`+val.type+`</td>
-                        <td>`+val.amount+`</td>
-                        <td>`+val.rate+`</td>
-                        <td>`+val.created_at+`</td>
-                    </tr>
-                `);
+                if(val.user_id == logged_id){
+                    $('.transaction-card').append(`
+                        <tr>
+                            <td>`+sn+`</td>
+                            <td>`+val.type+`</td>
+                            <td>`+val.amount+`</td>
+                            <td>`+val.rate+`</td>
+                            <td>`+val.created_at+`</td>
+                        </tr>
+                    `);
+                }
+            });
+        });
+
+        
+        // load transactions
+        $.get('/account/transaction/received', function(data) {
+            /*optional stuff to do after success */
+            // console.log(data);
+            $('.transaction-received').html('');
+            var sn = 0;
+            $.each(data, function(index, val) {
+                /* iterate through array or object */
+                // console.log(val);
+                sn++;
+                if(val.user_id == logged_id){
+                    $('.transaction-received').append(`
+                        <tr>
+                            <td>`+sn+`</td>
+                            <td>Received</td>
+                            <td>`+val.amount+`</td>
+                            <td>---</td>
+                            <td>`+val.created_at+`</td>
+                        </tr>
+                    `);
+                }
             });
         });
 
@@ -91,7 +136,8 @@
                 /* iterate through array or object */
                 console.log(val);
                 sn++;
-                $('.payments-card').append(`
+                if(val.user_id == logged_id){
+                    $('.payments-card').append(`
                     <tr>
                         <td>`+sn+`</td>
                         <td>`+val.from+`</td>
@@ -100,6 +146,7 @@
                         <td>`+val.created_at+`</td>
                     </tr>
                 `);
+                }
             });
 
         });
