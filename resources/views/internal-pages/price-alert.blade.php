@@ -23,6 +23,23 @@
                 <h1 class="lead">Set a Price Alert</h1>
                 <hr />
             </div>
+            <div class="col-md-6 col-md-offset-3">
+                <form>
+                    <div class="row">
+                        <div class="col-md-5">
+                        <div class="form-group">
+                            <label> <i class="fa fa-usd"></i> Price</label><br />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="sms" pattern="[0-9]*" required="" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-default"><i class="fa fa-lock"></i> Send Verification Code</button>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <!--// Main-Content-->
