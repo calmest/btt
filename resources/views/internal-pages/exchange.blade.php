@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Exchange History</h1>
+                <h1 class="lead">Exchange History</h1>
             </div>
         </div>
         <div class="row">
@@ -70,43 +70,42 @@
                 </div>
 
                 <div class="col-sm-12">
-                <h1 class="lead text-center">Trading Activities monitor's Here</h1>
-                 
-                <table class="table text-center">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <button class="btn btn-default">Bid</button>
-                                <br />
-                                <table class="table text-center">
-                                    <tbody>
-                                        <tr>
-                                            <td>Amount</td>
-                                            <td>Price</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                            <td>
-                                <button class="btn btn-default">Offer/Ask</button>
-                                <br />
-                                <table class="table text-center">
-                                    <tbody>
-                                        <tr>
-                                            <td>Amount</td>
-                                            <td>Price</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <h1 class="lead text-center">Trading Activities monitor's Here</h1>
+                     
+                    <table class="table text-center">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-default">Bid</button>
+                                    <br />
+                                    <table class="table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <td>Amount</td>
+                                                <td>Price</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <button class="btn btn-default">Offer/Ask</button>
+                                    <br />
+                                    <table class="table text-center">
+                                        <tbody>
+                                            <tr>
+                                                <td>Amount</td>
+                                                <td>Price</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-
     <!--// Main-Content-->
 @endsection
 

@@ -119,11 +119,11 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="amount">Address</label> 
-                        <input type="text" id="send_address" class="form-control" placeholder="wallet address" maxlength="15">
+                        <input type="text" id="send_address" class="form-control" placeholder="wallet address" required="">
                     </div>
                     <div class="form-group">
                         <label for="amount">Amount</label> 
-                        <input type="number" id="send_amount" class="form-control" placeholder="00.00" maxlength="15">
+                        <input type="number" id="send_amount" class="form-control" placeholder="00.00" maxlength="15" required="">
                     </div>
                     
                     <hr />
@@ -145,10 +145,42 @@
     <script type="text/javascript">
         // request buy
         function sendBtt(){
-            var walletId;
-            var amount;
+            // wallet id 
+            var token    = $("input[name=_token]").val();
+            var walletId = $("#send_address").val();
+            var amount   = $("#send_amount").val();
             
-            $(".error_msg").html('insufficient balance !!');
+            // ajax setup
+            var data = {
+                _token:token,
+                walletId:walletId,
+                amount:amount
+            }
+
+            // ajax post request 
+            $.ajax({
+                url: '/account/send/btt',
+                type: 'post',
+                dataType: 'json',
+                data: data,
+                success: function(data){
+                    console.log(data);
+                    // return messages
+                    if(data.status == 'success'){
+                        $('.success_msg').html(`
+                            <p class="text-success"> `+data.message+`</p>
+                        `);
+                    }else{
+                        $('.error_msg').html(`
+                            <p class="text-danger">`+data.message+`</p>
+                        `);
+                    }
+                },
+                error: function (data){
+                    alert("Error, Fail to send request !");
+                }
+            });
+
             return false;
         }
     </script>

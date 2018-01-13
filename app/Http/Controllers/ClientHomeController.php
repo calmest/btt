@@ -298,8 +298,59 @@ class ClientHomeController extends Controller
     {
         // amount
         $amount    = $request->amount;
-        $receiver  = $request->address;
-        $from      = $request->from;
+        $receiver  = $request->walletId;
+
+        // since client is recieving
+        $type = "send";
+        $rate = "0.5";
+
+        // get sender 
+        $client_id = Auth::user()->id;
+        $from   = Wallet::where('client_id', $client_id)->first();
+        // from address
+        $from = $from->address;
+
+        // check if users has enough to send
+        if($from->address > $amount){
+            // deduct balance from account
+            $update_wallet = Wallet::find($from->id);
+            $update_wallet->balance = $update_wallet->balance - $amount;
+            $update_wallet->update();
+
+            // create transaction logs
+            $transactions = new Transaction();
+            $transactions->user_id = $client_id;
+            $transactions->type    = $type;
+            $transactions->rate    = $rate;
+            $transactions->amount  = $amount;
+            $transactions->save();
+
+            // create payments 
+            $payments          = new Payment();
+            $payments->user_id = $client_id;
+            $payments->to      = $receiver;
+            $payments->from    = $from;
+            $payments->amount  = $amount;
+            $payments->save();
+
+            // response msg 
+            $msg = 'Transfer <i class="fa fa-database"></> <b>'.$amount.'</b> successful !';
+
+            // response data
+            $data = array(
+                'status'  => 'error',
+                'message' => $msg
+            );
+        }else{
+            // response data
+            $data = array(
+                'status'  => 'error',
+                'message' => 'Insufficent balance, Transaction not successful !'
+            );
+        }
+
+        // return response complete
+        return response()->json($data);
     }
 
     // request loan

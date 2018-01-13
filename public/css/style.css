@@ -140,7 +140,27 @@ label {
 	color: #fff;
 }
 
+h1 {
+	color:#fff;
+}
 
+p {
+	color:#fff;
+}
+
+td {
+	color:gold;
+}
+
+th {
+	color:#fff;
+	padding: 0.4em;
+	text-align: center;
+}
+
+.payments-card {
+	color:#fff;
+}
 
 /*--start editing from here--*/
 
