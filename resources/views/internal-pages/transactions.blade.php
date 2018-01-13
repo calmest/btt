@@ -87,17 +87,16 @@
                 /* iterate through array or object */
                 // console.log(val);
                 sn++;
-                if(val.user_id == logged_id){
-                    $('.transaction-card').append(`
-                        <tr>
-                            <td>`+sn+`</td>
-                            <td>`+val.type+`</td>
-                            <td>`+val.amount+`</td>
-                            <td>`+val.rate+`</td>
-                            <td>`+val.created_at+`</td>
-                        </tr>
-                    `);
-                }
+                $('.transaction-card').append(`
+                    <tr>
+                        <td>`+sn+`</td>
+                        <td>`+val.type+`</td>
+                        <td>`+val.amount+`</td>
+                        <td>`+val.rate+`</td>
+                        <td>`+val.created_at+`</td>
+                    </tr>
+                `);
+                
             });
         });
 
@@ -112,17 +111,15 @@
                 /* iterate through array or object */
                 // console.log(val);
                 sn++;
-                if(val.user_id == logged_id){
-                    $('.transaction-received').append(`
-                        <tr>
-                            <td>`+sn+`</td>
-                            <td>Received</td>
-                            <td>`+val.amount+`</td>
-                            <td>---</td>
-                            <td>`+val.created_at+`</td>
-                        </tr>
-                    `);
-                }
+                $('.transaction-received').append(`
+                    <tr>
+                        <td>`+sn+`</td>
+                        <td>Received</td>
+                        <td>`+val.amount+`</td>
+                        <td>---</td>
+                        <td>`+val.created_at+`</td>
+                    </tr>
+                `);
             });
         });
 
@@ -136,8 +133,7 @@
                 /* iterate through array or object */
                 console.log(val);
                 sn++;
-                if(val.user_id == logged_id){
-                    $('.payments-card').append(`
+                $('.payments-card').append(`
                     <tr>
                         <td>`+sn+`</td>
                         <td>`+val.from+`</td>
@@ -146,9 +142,7 @@
                         <td>`+val.created_at+`</td>
                     </tr>
                 `);
-                }
             });
-
         });
     </script>
 @endsection
