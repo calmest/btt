@@ -137,6 +137,26 @@
         </div>
     </div>
     <br /><br />
+    <!-- Main-Content -->
+    <div class="container">
+        <br /><br />
+        <div class="col-md-12">
+            <h1 class="lead">Recent Updates</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>from</th>
+                        <th>wallet id</th>
+                        <th>amount</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody class="payments-card"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--// Main-Content-->
 @endsection
 
 @section('scripts')
@@ -168,11 +188,15 @@
                     // return messages
                     if(data.status == 'success'){
                         $('.success_msg').html(`
-                            <p class="text-success"> `+data.message+`</p>
+                            <div class="alert alert-success">
+                                <p class="text-success"> `+data.message+`</p>
+                            </div>
                         `);
                     }else{
                         $('.error_msg').html(`
-                            <p class="text-danger">`+data.message+`</p>
+                            <div class="alert alert-danger">
+                                <p class="text-danger">`+data.message+`</p>
+                            </div>
                         `);
                     }
                 },
@@ -183,5 +207,81 @@
 
             return false;
         }
+    </script>
+    <script type="text/javascript">
+        var logged_id = '{{ Auth::user()->id }}';
+        // load transactions
+        $.get('/account/transaction/history', function(data) {
+            /*optional stuff to do after success */
+            // console.log(data);
+            $('.transaction-card').html('');
+            var sn = 0;
+            $.each(data, function(index, val) {
+                /* iterate through array or object */
+                // console.log(val);
+                sn++;
+                if(val.user_id == logged_id){
+                    $('.transaction-card').append(`
+                        <tr>
+                            <td>`+sn+`</td>
+                            <td>`+val.type+`</td>
+                            <td>`+val.amount+`</td>
+                            <td>`+val.rate+`</td>
+                            <td>`+val.created_at+`</td>
+                        </tr>
+                    `);
+                }
+            });
+        });
+
+        
+        // load transactions
+        $.get('/account/transaction/received', function(data) {
+            /*optional stuff to do after success */
+            // console.log(data);
+            $('.transaction-received').html('');
+            var sn = 0;
+            $.each(data, function(index, val) {
+                /* iterate through array or object */
+                // console.log(val);
+                sn++;
+                if(val.user_id == logged_id){
+                    $('.transaction-received').append(`
+                        <tr>
+                            <td>`+sn+`</td>
+                            <td>Received</td>
+                            <td>`+val.amount+`</td>
+                            <td>---</td>
+                            <td>`+val.created_at+`</td>
+                        </tr>
+                    `);
+                }
+            });
+        });
+
+
+        // load payments history
+        $.get('/account/payment/history', function(data) {
+            /*optional stuff to do after success */
+            $('.payments-card').html('');
+            var sn = 0;
+            $.each(data, function(index, val) {
+                /* iterate through array or object */
+                console.log(val);
+                sn++;
+                if(val.user_id == logged_id){
+                    $('.payments-card').append(`
+                    <tr>
+                        <td>`+sn+`</td>
+                        <td>`+val.from+`</td>
+                        <td>`+val.to+`</td>
+                        <td>`+val.amount+`</td>
+                        <td>`+val.created_at+`</td>
+                    </tr>
+                `);
+                }
+            });
+
+        });
     </script>
 @endsection

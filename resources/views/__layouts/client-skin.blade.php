@@ -35,7 +35,7 @@
         <div class="profile-sidebar">
             <div class="profile-userpic">
                 <img src="/images/logo.png" class="img-circle" width="50px" height="50px" alt=""><br />
-                {{ Auth::user()->name }}
+                <h1 class="lead">{{ Auth::user()->name }}</h1>
             </div>
         </div>
         <div class="divider"></div>
