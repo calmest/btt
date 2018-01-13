@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Wallets</h1>
+                <h1 class="lead">Wallets</h1><br />
                 <div class="row">
                     <div class="col-md-4" style="font-size: 14px;">
                         <div class="error_msg"></div>

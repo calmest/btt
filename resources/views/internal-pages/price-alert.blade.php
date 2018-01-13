@@ -20,7 +20,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Set a Price Alert</h1>
+                <h1 class="lead">Set a Price Alert</h1>
+                <hr />
             </div>
         </div>
     </div>
