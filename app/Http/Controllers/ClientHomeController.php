@@ -167,8 +167,13 @@ class ClientHomeController extends Controller
         # load clients payments
         $user_id = Auth::user()->id;
 
+        # wallets info
+        $wallet = Wallet::where('client_id', $user_id)->first();
+
         # payment history
-        $payments = Payment::where('user_id', $user_id)->get();
+        $payments = Payment::where('user_id', $user_id)
+                            ->orWhere('to', $wallet->address)
+                            ->get();
 
         $payment_box = [];
         foreach ($payments as $payment) {
